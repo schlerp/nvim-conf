@@ -1,5 +1,5 @@
 #!/bin/sh
 
 echo "Copying ./nvim to ~/.config/"
-cp -r ./nvim ~/.config/
+cp -rf ./nvim ~/.config/
 echo "Done!"
