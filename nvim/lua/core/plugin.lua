@@ -1,6 +1,4 @@
-local utils = require("core.utils")
-
-local default_plugins = {
+local plugins = {
 	-- many plugins require this
 	{
 		"nvim-lua/plenary.nvim",
@@ -11,10 +9,15 @@ local default_plugins = {
 		"catppuccin/nvim",
 		as = "catppuccin",
 		config = function()
-			vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+			vim.g.catppuccin_flavour = "macchiato" -- latte, frappe, macchiato, mocha
 			require("catppuccin").setup()
 			vim.api.nvim_command("colorscheme catppuccin")
 		end,
+	},
+
+	-- start page
+	{
+		"goolord/alpha-nvim",
 	},
 
 	-- tree sitting
@@ -25,7 +28,10 @@ local default_plugins = {
 	},
 
 	-- indent gutters
-	{ "lukas-reineke/indent-blankline.nvim", event = "VeryLazy" },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = "LspAttach",
+	},
 
 	-- surrounds manipulation
 	{
@@ -33,14 +39,27 @@ local default_plugins = {
 		config = function()
 			require("nvim-surround").setup()
 		end,
-		event = "VeryLazy",
+		event = "LspAttach",
 	},
 
 	-- notifications
-	{ "rcarriga/nvim-notify", event = "VeryLazy" },
+	{
+		"rcarriga/nvim-notify",
+		event = "VeryLazy",
+	},
 
 	-- telescope
-	{ "nvim-telescope/telescope.nvim", event = "VeryLazy" },
+	{
+		"nvim-telescope/telescope.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"gbrlsnchs/telescope-lsp-handlers.nvim",
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+			},
+		},
+	},
 
 	-- buffer line (top tabs)
 	{
@@ -73,6 +92,7 @@ local default_plugins = {
 	-- LSP
 	{
 		"VonHeikemen/lsp-zero.nvim",
+		event = "LspAttach",
 		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" }, -- Required
@@ -85,7 +105,6 @@ local default_plugins = {
 			{ "L3MON4D3/LuaSnip" }, -- Required
 			{ "onsails/lspkind.nvim" }, -- Optional
 		},
-		event = "VeryLazy",
 	},
 
 	-- enhanced LSP plugin
@@ -118,6 +137,15 @@ local default_plugins = {
 		end,
 		event = "LspAttach",
 	},
+
+	-- hovers
+	{
+		"lewis6991/hover.nvim",
+		config = function()
+			require("core.configs.hover")
+		end,
+		event = "LspAttach",
+	},
 }
 
 local function setup_lazy()
@@ -141,6 +169,4 @@ end
 setup_lazy()
 
 -- setup config using plugins array
-local plugins = require("config.plugins")
-local merged_plugins = utils.merge_arrays(default_plugins, plugins)
-require("lazy").setup(merged_plugins)
+require("lazy").setup(plugins)
