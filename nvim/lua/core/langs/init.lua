@@ -1,7 +1,9 @@
 local lua = require("core.langs.lua")
+local python = require("core.langs.python")
 
 local M = {
-	[lua.lang_name] = lua.lsp_settings,
+	lua = lua,
+    python = python
 }
 
 return M
