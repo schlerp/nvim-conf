@@ -108,16 +108,25 @@ local plugins = {
 	},
 
 	-- enhanced LSP plugin
+	--{
+	--	"nvimdev/lspsaga.nvim",
+	--	config = function()
+	--		require("lspsaga").setup({})
+	--	end,
+	--	event = "LspAttach",
+	--	dependencies = {
+	--		"nvim-treesitter/nvim-treesitter",
+	--		"nvim-tree/nvim-web-devicons",
+	--	},
+	--},
+
+	-- win bar breadcrumbs
 	{
-		"nvimdev/lspsaga.nvim",
+		"Bekaboo/dropbar.nvim",
 		config = function()
-			require("lspsaga").setup({})
+			require("dropbar").setup({})
 		end,
 		event = "LspAttach",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
 	},
 
 	-- linter
