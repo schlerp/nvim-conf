@@ -107,18 +107,14 @@ local plugins = {
 		},
 	},
 
-	-- enhanced LSP plugin
-	--{
-	--	"nvimdev/lspsaga.nvim",
-	--	config = function()
-	--		require("lspsaga").setup({})
-	--	end,
-	--	event = "LspAttach",
-	--	dependencies = {
-	--		"nvim-treesitter/nvim-treesitter",
-	--		"nvim-tree/nvim-web-devicons",
-	--	},
-	--},
+    -- terminal
+	{
+		"akinsho/toggleterm.nvim",
+		config = function()
+			require("toggleterm").setup()
+		end,
+		event = "VeryLazy",
+	},
 
 	-- win bar breadcrumbs
 	{
