@@ -3,9 +3,7 @@ local M = {
 	lang_name = "lua",
 
 	formatters = {
-		function()
-			return require("formatter").filetypes.lua.stylua
-		end,
+        "stylua",
 	},
 
 	linters = {

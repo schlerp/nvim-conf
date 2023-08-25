@@ -1,3 +1,5 @@
+local lang_configs = require("core.langs.init")
+
 require("mason").setup({
 	ui = {
 		border = "rounded",
@@ -7,9 +9,35 @@ require("mason").setup({
 			package_uninstalled = "✗",
 		},
 	},
-    ensure_installed = {
-        "lua_ls",
-        "luacheck",
-    },
+	log_level = vim.log.levels.WARN,
 })
-require("mason-lspconfig").setup()
+
+require("mason-lspconfig").setup({
+	automatic_installation = true,
+})
+
+local function get_used_tools_for_mason()
+	local ret = {}
+	for _, config in pairs(lang_configs) do
+		-- get the linters
+		for _, x in ipairs(config.linters) do
+			table.insert(ret, x)
+		end
+
+		-- get the formatters
+		for _, x in ipairs(config.formatters) do
+			table.insert(ret, x)
+		end
+
+		-- get the lsps
+		for _, x in ipairs(config.lsp_servers) do
+			table.insert(ret, x.lsp_name)
+		end
+	end
+	return ret
+end
+
+require("mason-tool-installer").setup({
+	ensure_installed = get_used_tools_for_mason(),
+	auto_update = true,
+})

@@ -31,5 +31,3 @@ require("telescope").setup({
 
 require("telescope").load_extension("fzf")
 require("telescope").load_extension("lsp_handlers")
-
-vim.lsp.handlers["textDocument/references"] = require("telescope.builtin").lsp_reference

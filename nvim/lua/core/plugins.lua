@@ -30,7 +30,7 @@ local plugins = {
 	-- indent gutters
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "LspAttach",
+		event = "VeryLazy",
 	},
 
 	-- surrounds manipulation
@@ -39,7 +39,7 @@ local plugins = {
 		config = function()
 			require("nvim-surround").setup()
 		end,
-		event = "LspAttach",
+		event = "VeryLazy",
 	},
 
 	-- notifications
@@ -92,12 +92,13 @@ local plugins = {
 	-- LSP
 	{
 		"VonHeikemen/lsp-zero.nvim",
-		event = "LspAttach",
+		event = "VeryLazy",
 		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" }, -- Required
 			{ "williamboman/mason.nvim" }, -- Optional
 			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+            { "WhoIsSethDaniel/mason-tool-installer.nvim" }, -- Optional
 
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" }, -- Required
@@ -122,7 +123,7 @@ local plugins = {
 		config = function()
 			require("dropbar").setup({})
 		end,
-		event = "LspAttach",
+		event = "VeryLazy",
 	},
 
 	-- linter
@@ -131,7 +132,7 @@ local plugins = {
 		config = function()
 			require("core.configs.lint")
 		end,
-		event = "LspAttach",
+		event = "VeryLazy",
 	},
 
 	-- formatter
@@ -140,7 +141,7 @@ local plugins = {
 		config = function()
 			require("core.configs.formatter")
 		end,
-		event = "LspAttach",
+		event = "VeryLazy",
 	},
 
 	-- hovers
@@ -149,8 +150,15 @@ local plugins = {
 		config = function()
 			require("core.configs.hover")
 		end,
-		event = "LspAttach",
+		event = "VeryLazy",
 	},
+
+    {
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        config = function()
+            require("lsp_lines").setup()
+        end,
+}
 }
 
 local function setup_lazy()

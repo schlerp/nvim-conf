@@ -2,8 +2,11 @@
 local lang_configs = require("core.langs.init")
 
 local file_types = {}
-for lang_name, config in ipairs(lang_configs) do
-	file_types[lang_name] = config.formatters
+for _, config in pairs(lang_configs) do
+	file_types[config.lang_name] = {}
+	for _, formatter in ipairs(config.formatters) do
+		table.insert(file_types[config.lang_name], require("formatter.filetypes." .. config.lang_name)[formatter])
+	end
 end
 
 file_types["*"] = {

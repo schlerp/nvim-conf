@@ -4,6 +4,6 @@
 
 ---@class LanguageDefinition
 ---@field lang_name string The name of this language, eg. "lua"
----@field formatters function[] An array of functions that initialise formatters
+---@field formatters string[] An array of functions that initialise formatters
 ---@field linters string[] An array of linter names (strings)
 ---@field lsp_servers LspServerDefinition[] An array of LspServerDefinitions

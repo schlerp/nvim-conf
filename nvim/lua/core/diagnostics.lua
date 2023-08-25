@@ -1,5 +1,7 @@
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = {
+        prefix = '●',
+    },
 	virtual_lines = false, --{ only_current_line = true },
 	severity_sort = true,
 	signs = true,
@@ -12,3 +14,16 @@ vim.diagnostic.config({
 		prefix = "",
 	},
 })
+
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+vim.keymap.set(
+  "n",
+  "<Leader>dl",
+  require("lsp_lines").toggle,
+  { desc = "Toggle lsp_lines" }
+)

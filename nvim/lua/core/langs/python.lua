@@ -3,12 +3,8 @@ local M = {
 	lang_name = "python",
 
 	formatters = {
-		function()
-			return {
-                require("formatter").filetypes.python.black,
-                require("formatter").filetypes.python.isort,
-            }
-		end,
+        "black",
+        "isort",
 	},
 
 	linters = {
