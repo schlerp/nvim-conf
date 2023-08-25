@@ -13,7 +13,7 @@ You can extend them by:
 2. Import the language definition file into `nvim/lua/core/langs/init.lua`.
 3. Extend the language definitions table to include your newly imported language definition.
 
-![Lua Language Config](./assets/lang_config_lua.png)
+![Lua Language Config](.assets/lang_config_lua.png)
 
 ## Usage
 
