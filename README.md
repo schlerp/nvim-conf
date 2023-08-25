@@ -1,9 +1,11 @@
 # Nvim Config
 
+![Neovim Dashboard](.assets/dashboard.png)
+
 This is my neovim config.
-This config suits me, feel free to fork and customise this repo.
+This config suits me, feel free to fork and customise this repository.
 The main "gimmick" of this config setup is the "lang" files found in `nvim/lua/core/langs`.
-These "lang" files define the LSP, linters and formatters for each languange.
+These "lang" files define the LSP, linters and formatters for each language.
 
 You can extend them by:
 
@@ -11,9 +13,11 @@ You can extend them by:
 2. Import the language definition file into `nvim/lua/core/langs/init.lua`.
 3. Extend the language definitions table to include your newly imported language definition.
 
+![Lua Language Config](./assets/lang_config_lua.png)
+
 ## Usage
 
-You can use the built in `install.sh` script to do a fresh install of this confing into `~/.config/nvim`.
+You can use the built in `install.sh` script to do a fresh install of this config into `~/.config/nvim`.
 It is suggested to remove/backup existing config with `mv ~/.config/nvim ~/.config/nvim-bak`.
 It is also suggested to remove the existing nvim local cache file where plugins are installed `rm -rf ~/.local/share/nvim`.
 
