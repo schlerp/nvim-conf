@@ -203,7 +203,7 @@ local plugins = {
 		},
 		event = "VeryLazy",
 		config = function()
-			require("codegpt.config")
+			require("core.codegpt")
 		end,
 	},
 }
