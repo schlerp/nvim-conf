@@ -32,3 +32,13 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
+-- nvim trees
+keymap.set("n", "<leader>ft", function()
+	local nvim_tree_api = require("nvim-tree.api")
+	nvim_tree_api.tree.toggle({
+		find_file = false,
+		focus = true,
+		update_root = false,
+	})
+end)

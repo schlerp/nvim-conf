@@ -67,6 +67,13 @@ local plugins = {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
+		config = function()
+			require("bufferline").setup({
+				options = {
+					diagnostics = "nvim_lsp",
+				},
+			})
+		end,
 		event = "VeryLazy",
 	},
 
@@ -98,7 +105,7 @@ local plugins = {
 			{ "neovim/nvim-lspconfig" }, -- Required
 			{ "williamboman/mason.nvim" }, -- Optional
 			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
-            { "WhoIsSethDaniel/mason-tool-installer.nvim" }, -- Optional
+			{ "WhoIsSethDaniel/mason-tool-installer.nvim" }, -- Optional
 
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" }, -- Required
@@ -108,7 +115,7 @@ local plugins = {
 		},
 	},
 
-    -- terminal
+	-- terminal
 	{
 		"akinsho/toggleterm.nvim",
 		config = function()
@@ -153,12 +160,52 @@ local plugins = {
 		event = "VeryLazy",
 	},
 
-    {
-        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-        config = function()
-            require("lsp_lines").setup()
-        end,
-}
+	-- toggle diagnostic lines
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		config = function()
+			require("lsp_lines").setup()
+		end,
+	},
+
+	--noice (better UI)
+	{
+		"folke/noice.nvim",
+		dependencies = {
+			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("core.configs.noice")
+		end,
+		event = "VeryLazy",
+	},
+
+	-- nvim tree
+	{
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("nvim-tree").setup({})
+		end,
+		event = "VeryLazy",
+	},
+
+	-- gotta have that AI apparently...
+	{
+		"dpayne/CodeGPT.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+		event = "VeryLazy",
+		config = function()
+			require("codegpt.config")
+		end,
+	},
 }
 
 local function setup_lazy()

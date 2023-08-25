@@ -2,6 +2,8 @@ local opt = vim.opt
 local g = vim.g
 local cmd = vim.cmd
 
+vim.opt.termguicolors = true
+
 -- mouse mode enable
 opt.mouse = "a"
 
