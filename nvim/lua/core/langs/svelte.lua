@@ -2,9 +2,7 @@
 local M = {
 	lang_name = "svelte",
 
-	formatters = {
-		"prettier",
-	},
+	formatters = {},
 
 	linters = {},
 
