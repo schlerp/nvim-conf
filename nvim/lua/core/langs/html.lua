@@ -4,13 +4,13 @@ local M = {
 
 	formatters = { "prettier" },
 
-	linters = {
-		"tidy",
-	},
+	linters = {},
 
 	lsp_servers = {
-		lsp_name = "html",
-		lsp_settings = {},
+		{
+			lsp_name = "html",
+			lsp_settings = {},
+		},
 	},
 }
 
