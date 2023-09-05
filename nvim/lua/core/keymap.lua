@@ -42,3 +42,8 @@ keymap.set("n", "<leader>ft", function()
 		update_root = false,
 	})
 end)
+
+-- Documentation generator
+keymap.set("n", "<leader>d", function()
+    require('neogen').generate()
+end)

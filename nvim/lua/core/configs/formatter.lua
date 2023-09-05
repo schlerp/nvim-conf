@@ -32,10 +32,3 @@ augroup FormatAutogroup
   autocmd BufWritePost *.lua,*.python FormatWrite
 augroup END
 ]])
-
-vim.cmd([[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.svelte,*.ts,*.js !pnpm run format <afile>
-augroup END
-]])

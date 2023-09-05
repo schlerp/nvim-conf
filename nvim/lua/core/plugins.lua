@@ -160,6 +160,16 @@ local plugins = {
 		event = "VeryLazy",
 	},
 
+	-- documentation generator
+	{
+		"danymat/neogen",
+		dependencies = "nvim-treesitter/nvim-treesitter",
+		config = function()
+            require("core.configs.neogen")
+        end,
+		version = "*"
+	},
+
 	-- toggle diagnostic lines
 	{
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
