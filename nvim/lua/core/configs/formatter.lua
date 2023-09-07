@@ -30,6 +30,6 @@ vim.cmd([[
 augroup FormatAutogroup
   autocmd!
   autocmd BufWritePost *.lua,*.py,*.rs,*.md FormatWrite
-  autocmd BufWritePost *.svelte,*.html,*.ts,*.tsx,*.js,*.jsx !prettier "%" --write
+  autocmd BufWritePost *.html,*.ts,*.tsx,*.js,*.jsx !prettier "%" --write
 augroup END
 ]])
