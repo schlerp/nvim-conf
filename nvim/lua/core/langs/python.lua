@@ -4,7 +4,6 @@ local M = {
 
 	formatters = {
 		"black",
-		"isort",
 	},
 
 	linters = {},
