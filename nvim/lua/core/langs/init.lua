@@ -5,6 +5,7 @@ local markdown = require("core.langs.markdown")
 local svelte = require("core.langs.svelte")
 local html = require("core.langs.html")
 local typescript = require("core.langs.typescript")
+local bash = require("core.langs.bash")
 
 local M = {
 	[lua.lang_name] = lua,
@@ -14,6 +15,7 @@ local M = {
 	[svelte.lang_name] = svelte,
 	[html.lang_name] = html,
 	[typescript.lang_name] = typescript,
+	[bash.lang_name] = bash,
 }
 
 return M
