@@ -5,7 +5,11 @@ local file_types = {}
 for _, config in pairs(lang_configs) do
 	file_types[config.lang_name] = {}
 	for _, formatter in ipairs(config.formatters) do
-		table.insert(file_types[config.lang_name], require("formatter.filetypes." .. config.lang_name)[formatter])
+		local lang_name = config.lang_name
+		if config.formatter_lang_name ~= nil then
+			lang_name = config.formatter_lang_name
+		end
+		table.insert(file_types[config.lang_name], require("formatter.filetypes." .. lang_name)[formatter])
 	end
 end
 
@@ -29,7 +33,7 @@ require("formatter").setup({
 vim.cmd([[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.lua,*.py,*.rs,*.md FormatWrite
+  autocmd BufWritePost *.lua,*.py,*.rs,*.md,*.sh FormatWrite
   autocmd BufWritePost *.html,*.ts,*.tsx,*.js,*.jsx !prettier "%" --write
 augroup END
 ]])

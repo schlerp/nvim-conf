@@ -2,6 +2,8 @@
 local M = {
 	lang_name = "bash",
 
+    formatter_lang_name = "sh",
+
 	formatters = {
 		"shfmt",
 	},
