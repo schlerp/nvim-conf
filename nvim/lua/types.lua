@@ -26,4 +26,4 @@
 ---@field custom_lang_defs LanguageDefinition[] A list of custom language definitions
 
 ---@class NvimConfig
----@field lang_config NvimLanguageConfig The nvim language config from `config.lang_config.lua`
+---@field lang_config NvimLanguageConfig | nil The nvim language config from `config.lang_config.lua`
