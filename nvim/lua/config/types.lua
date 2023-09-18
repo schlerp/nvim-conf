@@ -1,0 +1,15 @@
+---@alias BuiltinLangs
+---| "lua"
+---| "python"
+---| "rust"
+---| "markdown"
+---| "svelte"
+---| "html"
+---| "typescript"
+---| "bash"
+---| "cpp"
+---| "dockerfile"
+
+---@class NvimLanguageConfig
+---@field enabled_langs BuiltinLangs[] The list of enabled languages
+---@field custom_lang_defs LanguageDefinition[] A list of custom language definitions

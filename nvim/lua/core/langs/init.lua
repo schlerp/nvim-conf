@@ -1,21 +1,18 @@
-local lua = require("core.langs.lua")
-local python = require("core.langs.python")
-local rust = require("core.langs.rust")
-local markdown = require("core.langs.markdown")
-local svelte = require("core.langs.svelte")
-local html = require("core.langs.html")
-local typescript = require("core.langs.typescript")
-local bash = require("core.langs.bash")
+local lang_config = require("config.langs")
 
-local M = {
-	[lua.lang_name] = lua,
-	[python.lang_name] = python,
-	[rust.lang_name] = rust,
-	[markdown.lang_name] = markdown,
-	[svelte.lang_name] = svelte,
-	[html.lang_name] = html,
-	[typescript.lang_name] = typescript,
-	[bash.lang_name] = bash,
-}
+local M = {}
+
+-- load the builtin langues that have been enabled
+for _, value in ipairs(lang_config.enabled_langs) do
+	local success, this_lang_config = pcall(require, "core.langs." .. value)
+	if success == true then
+		M[this_lang_config.lang_name] = this_lang_config
+	end
+end
+
+-- load any custom language definitions
+for _, value in ipairs(lang_config.custom_lang_defs) do
+	M[value.lang_name] = value
+end
 
 return M
