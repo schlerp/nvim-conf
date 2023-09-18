@@ -1,6 +1,6 @@
 ---@type LanguageDefinition
 local M = {
-	lang_name = "sh",
+	lang_name = "bash",
 
 	formatters = {
 		"shfmt",
