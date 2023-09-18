@@ -1,11 +1,11 @@
 local lang_config = require("config.langs")
-
+local utils = require("core.utils")
 local M = {}
 
 -- load the builtin langues that have been enabled
 for _, value in ipairs(lang_config.enabled_langs) do
-	local success, this_lang_config = pcall(require, "core.langs." .. value)
-	if success == true then
+	local this_lang_config = utils.try_import_module("core.langs." .. value)
+	if this_lang_config ~= nil then
 		M[this_lang_config.lang_name] = this_lang_config
 	end
 end
