@@ -31,7 +31,7 @@ for _, value in ipairs(config.lang_config.enabled_langs) do
 end
 
 -- load any custom language definitions
-for _, value in ipairs(lang_config.custom_lang_defs) do
+for _, value in ipairs(config.lang_config.custom_lang_defs) do
 	M[value.lang_name] = value
 end
 
