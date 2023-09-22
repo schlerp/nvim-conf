@@ -156,6 +156,7 @@ local plugins = {
 		config = function()
 			require("barbecue").setup({})
 		end,
+		event = "VeryLazy",
 	},
 
 	-- linter
