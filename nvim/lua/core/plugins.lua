@@ -165,9 +165,9 @@ local plugins = {
 		"danymat/neogen",
 		dependencies = "nvim-treesitter/nvim-treesitter",
 		config = function()
-            require("core.configs.neogen")
-        end,
-		version = "*"
+			require("core.configs.neogen")
+		end,
+		version = "*",
 	},
 
 	-- toggle diagnostic lines
@@ -187,19 +187,6 @@ local plugins = {
 		},
 		config = function()
 			require("core.configs.noice")
-		end,
-		event = "VeryLazy",
-	},
-
-	-- nvim tree
-	{
-		"nvim-tree/nvim-tree.lua",
-		version = "*",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		config = function()
-			require("nvim-tree").setup({})
 		end,
 		event = "VeryLazy",
 	},
