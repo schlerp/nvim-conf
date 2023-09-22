@@ -202,16 +202,25 @@ local plugins = {
 	},
 
 	--noice (better UI)
+	--{
+	--	"folke/noice.nvim",
+	--	dependencies = {
+	--		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+	--		"MunifTanjim/nui.nvim",
+	--	},
+	--	config = function()
+	--		require("core.configs.noice")
+	--	end,
+	--	event = "VeryLazy",
+	--},
+
 	{
-		"folke/noice.nvim",
-		dependencies = {
-			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-			"MunifTanjim/nui.nvim",
-		},
+		"j-hui/fidget.nvim",
+		tag = "legacy",
+		event = "LspAttach",
 		config = function()
-			require("core.configs.noice")
+			require("core.configs.fidget")
 		end,
-		event = "VeryLazy",
 	},
 
 	-- gotta have that AI apparently...
