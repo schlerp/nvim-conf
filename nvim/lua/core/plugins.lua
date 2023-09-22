@@ -18,6 +18,9 @@ local plugins = {
 	-- start page
 	{
 		"goolord/alpha-nvim",
+		config = function()
+			require("core.configs.alpha")
+		end,
 	},
 
 	-- tree sitting
@@ -25,6 +28,9 @@ local plugins = {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		event = "VeryLazy",
+		config = function()
+			require("core.configs.treesitter")
+		end,
 	},
 
 	-- indent gutters
@@ -46,6 +52,9 @@ local plugins = {
 	{
 		"rcarriga/nvim-notify",
 		event = "VeryLazy",
+		config = function()
+			require("core.configs.notify")
+		end,
 	},
 
 	-- telescope
@@ -59,6 +68,9 @@ local plugins = {
 				build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 			},
 		},
+		config = function()
+			require("core.configs.telescope")
+		end,
 	},
 
 	-- buffer line (top tabs)
@@ -124,7 +136,7 @@ local plugins = {
 	{
 		"akinsho/toggleterm.nvim",
 		config = function()
-			require("toggleterm").setup()
+			require("core.terminal")
 		end,
 		event = "VeryLazy",
 	},
