@@ -1,5 +1,5 @@
-require('neogen').setup({
-    languages = {
-        ['svelte'] = require('neogen.configurations.javascript')
-    }
+require("neogen").setup({
+	languages = {
+		["svelte"] = require("neogen.configurations.javascript"),
+	},
 })

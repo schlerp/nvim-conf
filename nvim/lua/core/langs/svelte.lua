@@ -5,18 +5,18 @@ local M = {
 	formatters = {},
 
 	linters = {
-        "eslint",
-    },
+		"eslint",
+	},
 
 	lsp_servers = {
 		{
 			lsp_name = "svelte",
 			lsp_settings = {},
 		},
-        {
-            lsp_name = "tsserver",
-            lsp_settings = {},
-        },
+		{
+			lsp_name = "tsserver",
+			lsp_settings = {},
+		},
 	},
 }
 
