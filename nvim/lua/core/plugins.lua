@@ -106,7 +106,6 @@ local plugins = {
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
-			opt = true,
 		},
 		config = true,
 		event = "VeryLazy",
@@ -147,11 +146,16 @@ local plugins = {
 
 	-- win bar breadcrumbs
 	{
-		"Bekaboo/dropbar.nvim",
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
 		config = function()
-			require("dropbar").setup({})
+			require("barbecue").setup({})
 		end,
-		event = "VeryLazy",
 	},
 
 	-- linter
@@ -200,19 +204,6 @@ local plugins = {
 		end,
 		event = "VeryLazy",
 	},
-
-	--noice (better UI)
-	--{
-	--	"folke/noice.nvim",
-	--	dependencies = {
-	--		-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-	--		"MunifTanjim/nui.nvim",
-	--	},
-	--	config = function()
-	--		require("core.configs.noice")
-	--	end,
-	--	event = "VeryLazy",
-	--},
 
 	{
 		"j-hui/fidget.nvim",
