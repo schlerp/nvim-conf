@@ -17,9 +17,10 @@ cmp.setup({
 			mode = "symbol_text",
 			menu = {
 				buffer = "[Buff]",
-				nvim_lsp = "[LSP]",
+				nvim_lsp = "[LSP ]",
 				luasnip = "[Snip]",
-				nvim_lua = "[Lua]",
+				nvim_lua = "[Lua ]",
+				path = "[Path]",
 			},
 			maxwidth = 50,
 			ellipsis_char = "...",

@@ -10,6 +10,13 @@
 ---| "cpp"
 ---| "dockerfile"
 
+---@alias NvimMode
+---| "n"
+---| "i"
+---| "v"
+---| "x"
+---| "t"
+
 ---@class LspServerDefinition
 ---@field lsp_name string The name of the lsp server to setup
 ---@field lsp_settings table The config to be passed into lsp server setup function
@@ -25,5 +32,16 @@
 ---@field enabled_langs BuiltinLangs[] The list of enabled languages
 ---@field custom_lang_defs LanguageDefinition[] A list of custom language definitions
 
+---@class KeymapDefinition
+---@field mode NvimMode The mode this keymap will be mapped to
+---@field keys string The actual keys that will be mapped
+---@field command string | function The command string or function to be ran when `keys` are pressed
+---@field opts table | nil The options to be passed into `vim.keymap.set()`
+
+---@class NvimKeymapConfig
+---@field keymaps KeymapDefinition[] The list of key maps to be setup
+---@field terminal_keymaps KeymapDefinition[] The list of keymaps to be setup in `_G.set_terminal_keymaps()`
+
 ---@class NvimConfig
----@field lang_config NvimLanguageConfig | nil The nvim language config from `config.lang_config.lua`
+---@field lang_config NvimLanguageConfig | nil The nvim language config from `config.langs.lua`
+---@field keymap_config NvimKeymapConfig | nil The nvim keymap config from `config.keys.lua`

@@ -9,17 +9,18 @@ lsp.set_preferences({
 	manage_nvim_cmp = true,
 	call_servers = "local",
 	sign_icons = {
-		error = "",
-		warn = "",
+		error = "✘",
+		warn = "▲",
 		hint = "",
-		info = "",
+		info = "⚑",
 	},
 })
 
 lsp.setup_nvim_cmp({
 	sources = {
-		{ name = "nvim_lsp", keyword_length = 2},
-		{ name = "path", keyword_length = 2},
+		{ name = "nvim_lsp", keyword_length = 2 },
+		{ name = "nvim_lua", keyword_length = 2 },
+		{ name = "path", keyword_length = 2 },
 		{ name = "buffer", keyword_length = 2 },
 		{ name = "luasnip", keyword_length = 2 },
 	},
