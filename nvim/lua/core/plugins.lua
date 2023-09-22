@@ -205,12 +205,22 @@ local plugins = {
 		event = "VeryLazy",
 	},
 
+	-- add lsp server progress
 	{
 		"j-hui/fidget.nvim",
 		tag = "legacy",
 		event = "LspAttach",
 		config = function()
 			require("core.configs.fidget")
+		end,
+	},
+
+	-- cursor line (underline instances of word under cursor)
+	{
+		"RRethy/vim-illuminate",
+		event = "LspAttach",
+		config = function()
+			require("core.configs.illuminate")
 		end,
 	},
 
