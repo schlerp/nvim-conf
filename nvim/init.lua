@@ -5,9 +5,6 @@ require("core.set")
 require("core.plugins")
 require("core.configs.init")
 
--- setup lsp
-require("core.lsp.init")
-require("core.diagnostics")
 
 -- setup keymaps
 require("core.keymap")

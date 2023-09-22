@@ -100,6 +100,11 @@ local plugins = {
 	{
 		"VonHeikemen/lsp-zero.nvim",
 		event = "VeryLazy",
+		config = function()
+			-- setup lsp
+			require("core.lsp.init")
+			require("core.diagnostics")
+		end,
 		dependencies = {
 			-- LSP Support
 			{ "neovim/nvim-lspconfig" }, -- Required
