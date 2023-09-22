@@ -1,9 +1,7 @@
-vim.opt.list = true
-vim.opt.listchars:append("space:⋅")
-vim.opt.listchars:append("eol:↴")
-vim.opt.listchars:append("tab:>-")
-
 require("indent_blankline").setup({
 	show_end_of_line = true,
+	show_current_context = true,
 	space_char_blankline = " ",
+	buftype_exclude = { "terminal", "nofile", "quickfix", "prompt" },
+	filetype_exclude = { "lspinfo", "packer", "checkhealth", "help", "man", "alpha", "" },
 })

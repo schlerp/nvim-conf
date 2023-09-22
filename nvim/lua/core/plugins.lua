@@ -37,6 +37,9 @@ local plugins = {
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		event = "VeryLazy",
+		config = function()
+			require("core.configs.indent")
+		end,
 	},
 
 	-- surrounds manipulation
@@ -106,6 +109,7 @@ local plugins = {
 			opt = true,
 		},
 		config = true,
+		event = "VeryLazy",
 	},
 
 	-- LSP
@@ -185,6 +189,7 @@ local plugins = {
 			require("core.configs.neogen")
 		end,
 		version = "*",
+		event = "VeryLazy",
 	},
 
 	-- toggle diagnostic lines
@@ -193,6 +198,7 @@ local plugins = {
 		config = function()
 			require("lsp_lines").setup()
 		end,
+		event = "VeryLazy",
 	},
 
 	--noice (better UI)
