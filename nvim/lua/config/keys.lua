@@ -47,6 +47,15 @@ M.keymaps = {
 			require("neogen").generate()
 		end,
 	},
+
+	-- gitsigns
+	{
+		mode = "n",
+		keys = "<leader>gb",
+		command = function()
+			require("gitsigns").toggle_current_line_blame()
+		end,
+	},
 }
 
 ---@type KeymapDefinition[]
