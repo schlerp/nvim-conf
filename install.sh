@@ -120,7 +120,7 @@ main() {
 
     # move the files to the new config dir
     checkout_branch
-    msg "Installing '${latestTag}' of nvim-conf..."
+    msg "${GREEN}Installing nvim-conf...${NOFORMAT}"
     cp -rf ./nvim ~/.config/
 
     msg "${GREEN} ✅ Done!${NOFORMAT}"
