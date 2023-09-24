@@ -107,7 +107,9 @@ local plugins = {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
-		config = true,
+		config = function()
+			require("core.configs.lualine")
+		end,
 		event = "VeryLazy",
 	},
 
