@@ -7,7 +7,7 @@ script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd -P)
 
 usage() {
   cat << EOF # remove the space between << and EOF, this is due to web plugin issue
-Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-v] [-f] -p param_value arg1 [arg2...]
+Usage: $(basename "${BASH_SOURCE[0]}") [-h] [-u] [-f] [-v] [-t param_value]
 
 Installs this neovim config to ~/.config/nvim/.
 
@@ -15,7 +15,20 @@ Available options:
 
 -h, --help        Print this help and exit
 -u, --unstable    Install HEAD rather than latest release tag
--f, --overwrite   Overwrite custom configs with defaults
+-t, --tag         Install a specific tag (takes precedence over -u).
+-v, --verbose     Verbose mode (set -x)
+
+Examples:
+
+  # install latest stable version
+  ${BASH_SOURCE[0]}
+
+  # install latest unstable version
+  ${BASH_SOURCE[0]} -u
+
+  # install version v1.2.0
+  ${BASH_SOURCE[0]} -t v1.2.0
+
 EOF
   exit
 }
@@ -46,6 +59,7 @@ die() {
 
 parse_params() {
   unstable=0
+  targetTag=0
 
   while :; do
     case "${1-}" in
@@ -53,6 +67,10 @@ parse_params() {
     -v | --verbose) set -x ;;
     -u | --unstable) unstable=1 ;;
     --no-color) NO_COLOR=1 ;;
+    -t | --tag)
+      targetTag="${2-}"
+      shift
+      ;;
     -?*) die "Unknown option: $1" ;;
     *) break ;;
     esac
@@ -67,19 +85,21 @@ setup_colors
 
 # script logic here
 checkout_branch() {
-    # checkout main and pull
     git checkout main
     git pull
+    git fetch --tags
 
-    # if we want latest stable (default behaviour) then we get the latest tag
-    if [[ $unstable == 0 ]]; then
-        # Get new tags from remote
-        git fetch --tags
-
-        # Get latest tag name
+    if [[ $targetTag != 0 ]]; then
+        # a specific tag was set, make sure it exists
+        if [ $(git tag -l "$targetTag") ]; then
+            msg "${GREEN}Checking out ${targetTag}...${NOFORMAT}"
+            git checkout "$targetTag"
+        else
+            die "${RED}Tag: '${targetTag}' does not exist!${NOFORMAT}"
+        fi
+    elif [[ $unstable == 0 ]]; then
         latestTag=$(git describe --tags | cut -d "-" -f 1)
-
-        # Checkout latest tag
+        msg "${GREEN}Checking out ${latestTag}...${NOFORMAT}"
         git checkout "$latestTag"
     fi
 }
