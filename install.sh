@@ -14,6 +14,7 @@ Installs this neovim config to ~/.config/nvim/.
 Available options:
 
 -h, --help        Print this help and exit
+-u, --unstable    Install HEAD rather than latest release tag
 -f, --overwrite   Overwrite custom configs with defaults
 EOF
   exit
@@ -44,14 +45,14 @@ die() {
 }
 
 parse_params() {
-  # default values of variables set from params
-  overwrite=0
+  unstable=0
 
   while :; do
     case "${1-}" in
     -h | --help) usage ;;
+    -v | --verbose) set -x ;;
+    -u | --unstable) unstable=1 ;;
     --no-color) NO_COLOR=1 ;;
-    -f | --overwrite) overwrite=1 ;; # example flag
     -?*) die "Unknown option: $1" ;;
     *) break ;;
     esac
@@ -65,32 +66,44 @@ parse_params "$@"
 setup_colors
 
 # script logic here
+checkout_branch() {
+    # checkout main and pull
+    git checkout main
+    git pull
+
+    # if we want latest stable (default behaviour) then we get the latest tag
+    if [[ $unstable == 0 ]]; then
+        # Get new tags from remote
+        git fetch --tags
+
+        # Get latest tag name
+        latestTag=$(git describe --tags | cut -d "-" -f 1)
+
+        # Checkout latest tag
+        git checkout "$latestTag"
+    fi
+}
+
+
 
 main() {
     now=$(date +"%Y%m%d%H%M%S")
     config_dir="$HOME/.config/nvim"
+    backup_filename="nvim_${now}_backup"
 
     # check if config fodler exists
     if [[ -x $config_dir ]]; then
-        backup_filename="nvim_${now}_backup"
-        msg "${ORANGE}${config_dir} exists!${NOFORMAT}"
-        msg "${GREEN}Backing up to ~/.config/${backup_filename}${NOFORMAT}"
-        mv "$config_dir" "$backup_filename"
+        msg "${RED}${config_dir} exists!${NOFORMAT}"
+        msg "${ORANGE}Backing up to ~/.config/${backup_filename}${NOFORMAT}"
+        mv "$config_dir" "$HOME/.config/$backup_filename"
     fi
-
-    # create the config new directory
-    mkdir -p "${config_dir}/lua/core"
 
     # move the files to the new config dir
-    msg "${GREEN}Installing current version of nvim-conf${NOFORMAT}"
-    if [[ $overwrite == 1 ]]; then
-        msg "${ORANGE}Overwriting ${config_dir}/lua/config with latest defaults (overwrite=1)${NOFORMAT}"
-        cp -rf ./nvim ~/.config/
-    else
-        cp -f ./nvim/init.lua ~/.config/nvim/init.lua
-        cp -rf ./nvim/lua/core ~/.config/nvim/lua/core
-        cp -f ./nvim/lua/types.lua ~/.config/nvim/lua/types.lua
-    fi
+    checkout_branch
+    msg "Installing '${latestTag}' of nvim-conf..."
+    cp -rf ./nvim ~/.config/
 
     msg "${GREEN} ✅ Done!${NOFORMAT}"
 }
+
+main
