@@ -13,10 +13,14 @@ Installs this neovim config to ~/.config/nvim/.
 
 Available options:
 
--h, --help        Print this help and exit
--u, --unstable    Install HEAD rather than latest release tag
--t, --tag         Install a specific tag (takes precedence over -u).
--v, --verbose     Verbose mode (set -x)
+  -u, --unstable    Install origin/main rather than latest release tag
+  -t, --tag         Install a specific tag
+                        (takes precedence over -u)
+  -c, --current     Install the currently checked out commit
+                        (takes precedence over -u and -t)
+  -v, --verbose     Verbose mode
+                        (set -x)
+  -h, --help        Print this help and exit
 
 Examples:
 
@@ -29,6 +33,8 @@ Examples:
   # install version v1.2.0
   ${BASH_SOURCE[0]} -t v1.2.0
 
+  # install current commit
+  ${BASH_SOURCE[0]} -c
 EOF
   exit
 }
@@ -60,12 +66,14 @@ die() {
 parse_params() {
   unstable=0
   targetTag=0
+  current=0
 
   while :; do
     case "${1-}" in
     -h | --help) usage ;;
     -v | --verbose) set -x ;;
     -u | --unstable) unstable=1 ;;
+    -c | --current) current=1 ;;
     --no-color) NO_COLOR=1 ;;
     -t | --tag)
       targetTag="${2-}"
@@ -111,15 +119,16 @@ main() {
     config_dir="$HOME/.config/nvim"
     backup_filename="nvim_${now}_backup"
 
-    # check if config fodler exists
     if [[ -x $config_dir ]]; then
         msg "${RED}${config_dir} exists!${NOFORMAT}"
         msg "${ORANGE}Backing up to ~/.config/${backup_filename}${NOFORMAT}"
         mv "$config_dir" "$HOME/.config/$backup_filename"
     fi
 
-    # move the files to the new config dir
-    checkout_branch
+    if [[ $current == 0 ]]; then
+        checkout_branch
+    fi
+
     msg "${GREEN}Installing nvim-conf...${NOFORMAT}"
     cp -rf ./nvim ~/.config/
 
