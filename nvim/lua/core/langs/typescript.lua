@@ -1,19 +1,19 @@
 ---@type LanguageDefinition
 local M = {
-	lang_name = "typescript",
+    lang_name = "typescript",
 
-	formatters = {},
+    formatters = {},
 
-	linters = {
-		"eslint",
-	},
+    linters = {
+        "eslint",
+    },
 
-	lsp_servers = {
-		{
-			lsp_name = "tsserver",
-			lsp_settings = {},
-		},
-	},
+    lsp_servers = {
+        {
+            lsp_name = "tsserver",
+            lsp_settings = {},
+        },
+    },
 }
 
 return M

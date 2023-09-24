@@ -1,23 +1,23 @@
 ---@type LanguageDefinition
 local M = {
-	lang_name = "bash",
+    lang_name = "bash",
 
-	formatter_lang_name = "sh",
+    formatter_lang_name = "sh",
 
-	formatters = {
-		"shfmt",
-	},
+    formatters = {
+        "shfmt",
+    },
 
-	linters = {
-		"shellcheck",
-	},
+    linters = {
+        "shellcheck",
+    },
 
-	lsp_servers = {
-		{
-			lsp_name = "bashls",
-			lsp_settings = {},
-		},
-	},
+    lsp_servers = {
+        {
+            lsp_name = "bashls",
+            lsp_settings = {},
+        },
+    },
 }
 
 return M

@@ -1,17 +1,17 @@
 ---@type LanguageDefinition
 local M = {
-	lang_name = "html",
+    lang_name = "html",
 
-	formatters = { "prettier" },
+    formatters = { "prettier" },
 
-	linters = {},
+    linters = {},
 
-	lsp_servers = {
-		{
-			lsp_name = "html",
-			lsp_settings = {},
-		},
-	},
+    lsp_servers = {
+        {
+            lsp_name = "html",
+            lsp_settings = {},
+        },
+    },
 }
 
 return M

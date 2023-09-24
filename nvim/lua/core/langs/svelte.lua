@@ -1,23 +1,23 @@
 ---@type LanguageDefinition
 local M = {
-	lang_name = "svelte",
+    lang_name = "svelte",
 
-	formatters = {},
+    formatters = {},
 
-	linters = {
-		"eslint",
-	},
+    linters = {
+        "eslint",
+    },
 
-	lsp_servers = {
-		{
-			lsp_name = "svelte",
-			lsp_settings = {},
-		},
-		{
-			lsp_name = "tsserver",
-			lsp_settings = {},
-		},
-	},
+    lsp_servers = {
+        {
+            lsp_name = "svelte",
+            lsp_settings = {},
+        },
+        {
+            lsp_name = "tsserver",
+            lsp_settings = {},
+        },
+    },
 }
 
 return M

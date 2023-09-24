@@ -1,23 +1,23 @@
 ---@type LanguageDefinition
 local M = {
-	lang_name = "python",
+    lang_name = "python",
 
-	formatters = {
-		"black",
-	},
+    formatters = {
+        "black",
+    },
 
-	linters = {},
+    linters = {},
 
-	lsp_servers = {
-		{
-			lsp_name = "pyright",
-			lsp_settings = {},
-		},
-		{
-			lsp_name = "ruff_lsp",
-			lsp_settings = {},
-		},
-	},
+    lsp_servers = {
+        {
+            lsp_name = "pyright",
+            lsp_settings = {},
+        },
+        {
+            lsp_name = "ruff_lsp",
+            lsp_settings = {},
+        },
+    },
 }
 
 return M

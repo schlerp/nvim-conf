@@ -1,17 +1,17 @@
 ---@type LanguageDefinition
 local M = {
-	lang_name = "dockerfile",
+    lang_name = "dockerfile",
 
-	formatters = {},
+    formatters = {},
 
-	linters = {},
+    linters = {},
 
-	lsp_servers = {
-		{
-			lsp_name = "dockerls",
-			lsp_settings = {},
-		},
-	},
+    lsp_servers = {
+        {
+            lsp_name = "dockerls",
+            lsp_settings = {},
+        },
+    },
 }
 
 return M

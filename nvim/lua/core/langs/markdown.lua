@@ -1,17 +1,17 @@
 ---@type LanguageDefinition
 local M = {
-	lang_name = "markdown",
+    lang_name = "markdown",
 
-	formatters = {
-		"mdformat",
-	},
+    formatters = {
+        "mdformat",
+    },
 
-	linters = {
-		"markdownlint",
-		"vale",
-	},
+    linters = {
+        "markdownlint",
+        "vale",
+    },
 
-	lsp_servers = {},
+    lsp_servers = {},
 }
 
 return M
