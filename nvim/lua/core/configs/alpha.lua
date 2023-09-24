@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("User", {
 		local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
 		dashboard.section.footer.val = {
 			"",
-			version .. " ( " .. stats.count .. ", 󰖉 " .. ms .. "ms)",
+			version .. " ( " .. stats.loaded .. "/" .. stats.count .. ", 󰖉 " .. ms .. "ms)",
 		}
 		pcall(vim.cmd.AlphaRedraw)
 	end,
