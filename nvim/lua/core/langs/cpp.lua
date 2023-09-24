@@ -1,19 +1,19 @@
 ---@type LanguageDefinition
 local M = {
-	lang_name = "cpp",
+    lang_name = "cpp",
 
-	formatters = {
-		"clang-format",
-	},
+    formatters = {
+        "clang-format",
+    },
 
-	linters = {},
+    linters = {},
 
-	lsp_servers = {
-		{
-			lsp_name = "clangd",
-			lsp_settings = {},
-		},
-	},
+    lsp_servers = {
+        {
+            lsp_name = "clangd",
+            lsp_settings = {},
+        },
+    },
 }
 
 return M
