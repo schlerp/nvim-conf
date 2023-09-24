@@ -218,6 +218,20 @@ local plugins = {
 		end,
 	},
 
+	-- Neogit (nice git interface)
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"nvim-telescope/telescope.nvim", -- optional
+			"sindrets/diffview.nvim", -- optional
+		},
+		config = function()
+			require("core.configs.neogit")
+		end,
+		event = "VeryLazy",
+	},
+
 	-- cursor line (underline instances of word under cursor)
 	{
 		"RRethy/vim-illuminate",

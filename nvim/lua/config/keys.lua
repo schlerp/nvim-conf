@@ -56,6 +56,14 @@ M.keymaps = {
 			require("gitsigns").toggle_current_line_blame()
 		end,
 	},
+	-- neogit
+	{
+		mode = "n",
+		keys = "<leader>gg",
+		command = function()
+			require("neogit").open()
+		end,
+	},
 }
 
 ---@type KeymapDefinition[]
