@@ -1,0 +1,30 @@
+name: CI Checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout the latest commit
+        uses: actions/checkout@v3
+      - name: Run luacheck
+        uses: nebularg/actions-luacheck@v1
+        with:
+          args: -o 011
+
+  formatting:
+    name: Formatting
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout the latest commit
+        uses: actions/checkout@v3
+      - name: Run stylua
+        uses: JohnnyMorganz/stylua-action@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: latest
+          args: --check ./nvim/
