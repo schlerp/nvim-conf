@@ -22,17 +22,20 @@ g.loaded_matchparen = 1
 g.loaded_logiPat = 1
 g.loaded_rrhelper = 1
 
--- mouse mode enable
-opt.mouse = "a"
-
 -- file browser settings
 g.netrw_browse_split = 0
 g.netrw_banner = 0
 g.netrw_winsize = 25
 
+-- catpuccin theme
+g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+
 -- line nos
 opt.nu = true
 --opt.relativenumber = true
+
+-- mouse mode enable
+opt.mouse = "a"
 
 -- tabs
 opt.tabstop = 4
