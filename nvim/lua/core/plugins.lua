@@ -31,6 +31,7 @@ local plugins = {
     -- indent gutters
     {
         "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
         event = "VeryLazy",
         config = function() require("core.configs.indent") end,
     },
