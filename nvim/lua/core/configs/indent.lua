@@ -1,4 +1,4 @@
-require("indent_blankline").setup({
+require("ibl").setup({
     show_end_of_line = true,
     show_current_context = true,
     space_char_blankline = " ",
