@@ -141,6 +141,13 @@ local plugins = {
         event = "VeryLazy",
     },
 
+    -- scrollbars
+    {
+        "petertriho/nvim-scrollbar",
+        config = function() require("scrollbar").setup() end,
+        event = "VeryLazy",
+    },
+
     -- linter
     {
         "mfussenegger/nvim-lint",
