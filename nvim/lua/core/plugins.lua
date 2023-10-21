@@ -144,7 +144,7 @@ local plugins = {
     -- scrollbars
     {
         "petertriho/nvim-scrollbar",
-        config = function() require("scrollbar").setup() end,
+        config = function() require("core.configs.scrollbar") end,
         event = "VeryLazy",
     },
 
