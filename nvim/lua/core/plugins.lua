@@ -239,7 +239,7 @@ if config.feature_config.use_copilot then
     plugins[#plugins + 1] = {
         "zbirenbaum/copilot.lua",
         event = "VeryLazy",
-        config = function() require("copilot").setup({}) end,
+        config = function() require("core.configs.copilot") end,
     }
 end
 
