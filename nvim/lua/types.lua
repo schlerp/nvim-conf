@@ -42,6 +42,14 @@
 ---@field keymaps KeymapDefinition[] The list of key maps to be setup
 ---@field terminal_keymaps KeymapDefinition[] The list of keymaps to be setup in `_G.set_terminal_keymaps()`
 
+---@class NvimFeatureConfig
+---@field use_source_graph boolean | nil If truthy, source graph will be installed and used
+---@field use_scrollbars boolean | nil If truthy, scrollbars will be enabled
+---@field use_start_page boolean | nil If truthy, the start page will be installed and used
+---@field use_neogit boolean | nil If truthy, the start page will be installed and used
+---@field use_copilot boolean | nil If truthy, copilot will be installed and enabled
+
 ---@class NvimConfig
 ---@field lang_config NvimLanguageConfig | nil The nvim language config from `config.langs.lua`
 ---@field keymap_config NvimKeymapConfig | nil The nvim keymap config from `config.keys.lua`
+---@field feature_config NvimFeatureConfig | nil The nvim keymap config from `config.keys.lua`

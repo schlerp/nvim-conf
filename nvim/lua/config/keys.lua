@@ -42,11 +42,19 @@ M.keymaps = {
         keys = "<leader>gb",
         command = function() require("gitsigns").toggle_current_line_blame() end,
     },
+
     -- neogit
     {
         mode = "n",
         keys = "<leader>gg",
         command = function() require("neogit").open() end,
+    },
+
+    -- sourcegraph
+    {
+        mode = "n",
+        keys = "<leader>ss",
+        command = function() require("sg.extensions.telescope").fuzzy_search_results() end,
     },
 }
 

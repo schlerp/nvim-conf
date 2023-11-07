@@ -1,3 +1,5 @@
+local config = require("core.config")
+
 local plugins = {
     -- many plugins require this
     {
@@ -12,12 +14,6 @@ local plugins = {
             require("catppuccin").setup()
             vim.api.nvim_command("colorscheme catppuccin")
         end,
-    },
-
-    -- start page
-    {
-        "goolord/alpha-nvim",
-        config = function() require("core.configs.alpha") end,
     },
 
     -- tree sitting
@@ -141,25 +137,6 @@ local plugins = {
         event = "VeryLazy",
     },
 
-    -- sourcegraph plugin
-    {
-        "sourcegraph/sg.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-
-        -- If you have a recent version of lazy.nvim, you don't need to add this!
-        build = "nvim -l build/init.lua",
-    },
-
-    -- scrollbars
-    {
-        "petertriho/nvim-scrollbar",
-        config = function() require("core.configs.scrollbar") end,
-        event = "VeryLazy",
-    },
-
     -- linter
     {
         "mfussenegger/nvim-lint",
@@ -205,8 +182,47 @@ local plugins = {
         config = function() require("core.configs.fidget") end,
     },
 
-    -- Neogit (nice git interface)
+    -- cursor line (underline instances of word under cursor)
     {
+        "RRethy/vim-illuminate",
+        event = "LspAttach",
+        config = function() require("core.configs.illuminate") end,
+    },
+}
+
+if config.feature_config.use_source_graph then
+    -- sourcegraph plugin
+    plugins[#plugins + 1] = {
+        "sourcegraph/sg.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        config = function() require("sg").setup() end,
+        event = "VeryLazy",
+    }
+end
+
+if config.feature_config.use_scrollbars then
+    -- scrollbars
+    plugins[#plugins + 1] = {
+        "petertriho/nvim-scrollbar",
+        config = function() require("core.configs.scrollbar") end,
+        event = "VeryLazy",
+    }
+end
+
+if config.feature_config.use_start_page then
+    -- start page
+    plugins[#plugins + 1] = {
+        "goolord/alpha-nvim",
+        config = function() require("core.configs.alpha") end,
+    }
+end
+
+if config.feature_config.use_neogit then
+    -- Neogit (nice git interface)
+    plugins[#plugins + 1] = {
         "NeogitOrg/neogit",
         dependencies = {
             "nvim-lua/plenary.nvim", -- required
@@ -215,26 +231,17 @@ local plugins = {
         },
         config = function() require("core.configs.neogit") end,
         event = "VeryLazy",
-    },
+    }
+end
 
-    -- cursor line (underline instances of word under cursor)
-    {
-        "RRethy/vim-illuminate",
-        event = "LspAttach",
-        config = function() require("core.configs.illuminate") end,
-    },
-
+if config.feature_config.use_copilot then
     -- gotta have that AI apparently...
-    {
-        "dpayne/CodeGPT.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-        },
+    plugins[#plugins + 1] = {
+        "zbirenbaum/copilot.lua",
         event = "VeryLazy",
-        config = function() require("core.codegpt") end,
-    },
-}
+        config = function() require("copilot").setup({}) end,
+    }
+end
 
 local function setup_lazy()
     local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
