@@ -11,7 +11,12 @@ local M = {
     lsp_servers = {
         {
             lsp_name = "clangd",
-            lsp_settings = {},
+            lsp_settings = {
+                cmd = {
+                    "clangd",
+                    "--offset-encoding=utf-16",
+                },
+            },
         },
     },
 }
