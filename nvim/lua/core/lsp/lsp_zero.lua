@@ -1,7 +1,13 @@
-local lsp = require("lsp-zero")
+local lsp_zero = require("lsp-zero")
+
+lsp_zero.on_attach(function(client, bufnr)
+    -- see :help lsp-zero-keybindings
+    -- to learn the available actions
+    lsp_zero.default_keymaps({ buffer = bufnr })
+end)
 
 -- lsp.preset("recommended")
-lsp.set_preferences({
+lsp_zero.set_preferences({
     setup_servers_on_start = true,
     set_lsp_keymaps = true,
     configure_diagnostics = true,
@@ -16,4 +22,4 @@ lsp.set_preferences({
     },
 })
 
-lsp.setup()
+lsp_zero.setup({})
