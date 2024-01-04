@@ -22,13 +22,17 @@ local plugins = {
         build = ":TSUpdate",
         event = "VeryLazy",
         config = function() require("core.configs.treesitter") end,
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            "RRethy/nvim-treesitter-textsubjects",
+        },
     },
 
     -- indent gutters
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",
-        event = "VeryLazy",
+        event = "LspAttach",
         config = function() require("core.configs.indent") end,
     },
 
@@ -36,7 +40,7 @@ local plugins = {
     {
         "kylechui/nvim-surround",
         config = function() require("nvim-surround").setup() end,
-        event = "VeryLazy",
+        event = "LspAttach",
     },
 
     -- notifications
@@ -134,28 +138,28 @@ local plugins = {
             "nvim-tree/nvim-web-devicons", -- optional dependency
         },
         config = function() require("barbecue").setup({}) end,
-        event = "VeryLazy",
+        event = "LspAttach",
     },
 
     -- linter
     {
         "mfussenegger/nvim-lint",
         config = function() require("core.configs.lint") end,
-        event = "VeryLazy",
+        event = "LspAttach",
     },
 
     -- formatter
     {
         "mhartington/formatter.nvim",
         config = function() require("core.configs.formatter") end,
-        event = "VeryLazy",
+        event = "LspAttach",
     },
 
     -- hovers
     {
         "lewis6991/hover.nvim",
         config = function() require("core.configs.hover") end,
-        event = "VeryLazy",
+        event = "LspAttach",
     },
 
     -- documentation generator
@@ -164,14 +168,14 @@ local plugins = {
         dependencies = "nvim-treesitter/nvim-treesitter",
         config = function() require("core.configs.neogen") end,
         version = "*",
-        event = "VeryLazy",
+        event = "LspAttach",
     },
 
     -- toggle diagnostic lines
     {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
         config = function() require("lsp_lines").setup() end,
-        event = "VeryLazy",
+        event = "LspAttach",
     },
 
     -- add lsp server progress
@@ -199,7 +203,7 @@ if config.feature_config.use_source_graph then
             "nvim-telescope/telescope.nvim",
         },
         config = function() require("sg").setup() end,
-        event = "VeryLazy",
+        event = "LspAttach",
     }
 end
 
@@ -208,7 +212,7 @@ if config.feature_config.use_scrollbars then
     plugins[#plugins + 1] = {
         "petertriho/nvim-scrollbar",
         config = function() require("core.configs.scrollbar") end,
-        event = "VeryLazy",
+        event = "LspAttach",
     }
 end
 
@@ -238,7 +242,7 @@ if config.feature_config.use_copilot then
     -- gotta have that AI apparently...
     plugins[#plugins + 1] = {
         "zbirenbaum/copilot.lua",
-        event = "VeryLazy",
+        event = "LspAttach",
         config = function() require("core.configs.copilot") end,
     }
 end
