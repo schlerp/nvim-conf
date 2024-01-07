@@ -56,6 +56,33 @@ M.keymaps = {
         keys = "<leader>ss",
         command = function() require("sg.extensions.telescope").fuzzy_search_results() end,
     },
+
+    -- trouble (diagnostics)
+    {
+        mode = "n",
+        keys = "<leader>xx",
+        command = function() require("trouble").toggle() end,
+    },
+    {
+        mode = "n",
+        keys = "<leader>xw",
+        command = function() require("trouble").toggle("workspace_diagnostics") end,
+    },
+    {
+        mode = "n",
+        keys = "<leader>xd",
+        command = function() require("trouble").toggle("document_diagnostics") end,
+    },
+    {
+        mode = "n",
+        keys = "<leader>xq",
+        command = function() require("trouble").toggle("quickfix") end,
+    },
+    {
+        mode = "n",
+        keys = "<leader>xl",
+        command = function() require("trouble").toggle("loclist") end,
+    },
 }
 
 ---@type KeymapDefinition[]
