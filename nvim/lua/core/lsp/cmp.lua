@@ -18,18 +18,18 @@ cmp.setup({
         { name = "luasnip", keyword_length = 2 },
     },
     formatting = {
-        format = lspkind.cmp_format({
-            mode = "symbol_text",
-            menu = {
-                buffer = "[Buff]",
-                nvim_lsp = "[LSP ]",
-                luasnip = "[Snip]",
-                nvim_lua = "[Lua ]",
-                path = "[Path]",
-            },
-            maxwidth = 50,
-            ellipsis_char = "...",
-        }),
+        fields = { "kind", "abbr", "menu" },
+        format = function(entry, vim_item)
+            local kind = require("lspkind").cmp_format({
+                mode = "symbol_text",
+                maxwidth = 50,
+            })(entry, vim_item)
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = " " .. (strings[1] or "") .. "  "
+            kind.menu = "  (" .. (strings[2] or "") .. ")"
+
+            return kind
+        end,
     },
     duplicates = {
         buffer = 1,
@@ -38,8 +38,11 @@ cmp.setup({
         luasnip = 1,
     },
     window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
+        completion = {
+            winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
+            col_offset = -3,
+            side_padding = 0,
+        },
     },
     preselect = cmp.PreselectMode.None,
     completion = {
