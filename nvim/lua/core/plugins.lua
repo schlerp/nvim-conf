@@ -121,6 +121,13 @@ local plugins = {
         },
     },
 
+    -- for developing neovim plugins
+    {
+        "folke/neodev.nvim",
+        event = "VeryLazy",
+        config = function() require("core.configs.neodev") end,
+    },
+
     -- terminal
     {
         "akinsho/toggleterm.nvim",
