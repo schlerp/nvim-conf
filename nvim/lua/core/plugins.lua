@@ -169,15 +169,6 @@ local plugins = {
         event = "LspAttach",
     },
 
-    -- documentation generator
-    {
-        "danymat/neogen",
-        dependencies = "nvim-treesitter/nvim-treesitter",
-        config = function() require("core.configs.neogen") end,
-        version = "*",
-        event = "LspAttach",
-    },
-
     -- toggle diagnostic lines
     {
         "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -201,19 +192,6 @@ local plugins = {
     },
 }
 
-if config.feature_config.use_source_graph then
-    -- sourcegraph plugin
-    plugins[#plugins + 1] = {
-        "sourcegraph/sg.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-        config = function() require("sg").setup() end,
-        event = "LspAttach",
-    }
-end
-
 if config.feature_config.use_scrollbars then
     -- scrollbars
     plugins[#plugins + 1] = {
@@ -228,20 +206,6 @@ if config.feature_config.use_start_page then
     plugins[#plugins + 1] = {
         "goolord/alpha-nvim",
         config = function() require("core.configs.alpha") end,
-    }
-end
-
-if config.feature_config.use_neogit then
-    -- Neogit (nice git interface)
-    plugins[#plugins + 1] = {
-        "NeogitOrg/neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim", -- required
-            "nvim-telescope/telescope.nvim", -- optional
-            "sindrets/diffview.nvim", -- optional
-        },
-        config = function() require("core.configs.neogit") end,
-        event = "VeryLazy",
     }
 end
 
