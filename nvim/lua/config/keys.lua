@@ -61,6 +61,23 @@ M.keymaps = {
         keys = "<leader>xl",
         command = function() require("trouble").toggle("loclist") end,
     },
+    -- copy current filename into system copy/paste buffer
+    {
+        mode = "n",
+        keys = "<leader>cf",
+        command = function()
+            vim.fn.setreg("*", vim.fn.expand("%"))
+            vim.notify("Copied file path to clipboard")
+        end,
+    },
+    {
+        mode = "n",
+        keys = "<leader>cF",
+        command = function()
+            vim.fn.setreg("*", vim.fn.expand("%:p"))
+            vim.notify("Copied absolute file path to clipboard")
+        end,
+    },
 }
 
 ---@type KeymapDefinition[]
