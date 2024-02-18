@@ -11,7 +11,7 @@ dashboard.section.buttons.val = {
 }
 
 local v = vim.version()
-local version = " nvim v" .. v.major .. "." .. v.minor .. "." .. v.patch
+local version = "  v" .. v.major .. "." .. v.minor .. "." .. v.patch
 
 vim.api.nvim_create_autocmd("User", {
     pattern = "LazyVimStarted",
