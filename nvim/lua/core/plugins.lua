@@ -20,7 +20,6 @@ local plugins = {
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        event = "VeryLazy",
         config = function() require("core.configs.treesitter") end,
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",
@@ -124,7 +123,7 @@ local plugins = {
     -- for developing neovim plugins
     {
         "folke/neodev.nvim",
-        event = "VeryLazy",
+        event = "LspAttach",
         config = function() require("core.configs.neodev") end,
     },
 
@@ -145,14 +144,14 @@ local plugins = {
             "nvim-tree/nvim-web-devicons", -- optional dependency
         },
         config = function() require("barbecue").setup({}) end,
-        event = "LspAttach",
+        event = "VeryLazy",
     },
 
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function() require("trouble").setup({}) end,
-        event = "LspAttach",
+        event = "VeryLazy",
     },
 
     -- linter
@@ -187,7 +186,7 @@ local plugins = {
     {
         "j-hui/fidget.nvim",
         tag = "legacy",
-        event = "LspAttach",
+        event = "VeryLazy",
         config = function() require("core.configs.fidget") end,
     },
 
