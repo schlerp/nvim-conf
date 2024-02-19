@@ -8,12 +8,8 @@ local plugins = {
 
     -- colour scheme
     {
-        "catppuccin/nvim",
-        as = "catppuccin",
-        config = function()
-            require("catppuccin").setup()
-            vim.api.nvim_command("colorscheme catppuccin")
-        end,
+        "ellisonleao/gruvbox.nvim",
+        config = function() require("core.configs.gruvbox") end,
     },
 
     -- tree sitting
