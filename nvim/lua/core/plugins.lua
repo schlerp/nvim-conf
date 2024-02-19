@@ -112,6 +112,7 @@ local plugins = {
             { "hrsh7th/nvim-cmp" }, -- Required
             { "hrsh7th/cmp-nvim-lsp" }, -- Required
             { "L3MON4D3/LuaSnip" }, -- Required
+            { "rafamadriz/friendly-snippets" },
             { "onsails/lspkind.nvim" }, -- Optional
         },
     },
@@ -161,13 +162,6 @@ local plugins = {
     {
         "mhartington/formatter.nvim",
         config = function() require("core.configs.formatter") end,
-        event = "LspAttach",
-    },
-
-    -- hovers
-    {
-        "lewis6991/hover.nvim",
-        config = function() require("core.configs.hover") end,
         event = "LspAttach",
     },
 

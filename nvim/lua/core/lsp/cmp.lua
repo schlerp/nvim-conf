@@ -2,6 +2,9 @@ local lspkind = require("lspkind")
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 
+-- snippet loading
+require("luasnip.loaders.from_vscode").lazy_load()
+
 local select_opts = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
