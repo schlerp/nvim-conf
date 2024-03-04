@@ -70,7 +70,7 @@ opt.updatetime = 100
 opt.shortmess:append("c")
 
 -- code gutter
-opt.colorcolumn = "88"
+opt.colorcolumn = { 88, 100 }
 
 -- set leader
 g.mapleader = " "
