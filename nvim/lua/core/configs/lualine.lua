@@ -3,7 +3,7 @@ require("lualine").setup({
         icons_enabled = true,
         theme = "auto",
         component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
         disabled_filetypes = {
             statusline = {},
             winbar = {},
@@ -36,5 +36,5 @@ require("lualine").setup({
         lualine_y = {},
         lualine_z = {},
     },
-    extensions = { "quickfix", "lazy", "toggleterm" },
+    extensions = { "quickfix", "lazy", "toggleterm", "mason" },
 })
