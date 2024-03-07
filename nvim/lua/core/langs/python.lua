@@ -3,7 +3,7 @@ local M = {
     lang_name = "python",
 
     formatters = {
-        "black",
+        "ruff",
     },
 
     linters = {},
