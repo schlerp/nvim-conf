@@ -79,6 +79,9 @@ opt.scrolloff = 2
 opt.sidescrolloff = 15
 opt.sidescroll = 1
 
+-- set the end of buffer fill char to " " (space)
+opt.fillchars = { eob = " " }
+
 -- highlight yanked text for 200ms using the "Visual" highlight group
 cmd([[
     augroup highlight_yank
