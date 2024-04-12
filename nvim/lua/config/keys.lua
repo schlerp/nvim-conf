@@ -7,26 +7,31 @@ M.keymaps = {
         mode = "n",
         keys = "<leader>ff",
         command = function() require("telescope.builtin").find_files() end,
+        opts = { desc = "Fuzzy find files" },
     },
     {
         mode = "n",
         keys = "<leader>fF",
         command = function() require("telescope.builtin").git_files() end,
+        opts = { desc = "Fuzzy find files (git files)" },
     },
     {
         mode = "n",
         keys = "<leader>fg",
         command = function() require("telescope.builtin").live_grep() end,
+        opts = { desc = "Fuzzy live grep" },
     },
     {
         mode = "n",
         keys = "<leader>fb",
         command = function() require("telescope.builtin").buffers() end,
+        opts = { desc = "Fuzzy find buffers" },
     },
     {
         mode = "n",
         keys = "<leader>fh",
         command = function() require("telescope.builtin").help_tags() end,
+        opts = { desc = "Fuzzy find help tags" },
     },
 
     -- gitsigns
@@ -34,32 +39,38 @@ M.keymaps = {
         mode = "n",
         keys = "<leader>gb",
         command = function() require("gitsigns").toggle_current_line_blame() end,
+        opts = { desc = "Toggle current line git blame" },
     },
     -- trouble (diagnostics)
     {
         mode = "n",
         keys = "<leader>xx",
         command = function() require("trouble").toggle() end,
+        opts = { desc = "Open trouble (diagnostics)" },
     },
     {
         mode = "n",
         keys = "<leader>xw",
         command = function() require("trouble").toggle("workspace_diagnostics") end,
+        opts = { desc = "View workspace diagnostics" },
     },
     {
         mode = "n",
         keys = "<leader>xd",
         command = function() require("trouble").toggle("document_diagnostics") end,
+        opts = { desc = "View document diagnostics" },
     },
     {
         mode = "n",
         keys = "<leader>xq",
         command = function() require("trouble").toggle("quickfix") end,
+        opts = { desc = "Open trouble quickfix" },
     },
     {
         mode = "n",
         keys = "<leader>xl",
         command = function() require("trouble").toggle("loclist") end,
+        opts = { desc = "open trouble loclist" },
     },
     -- copy current filename into system copy/paste buffer
     {
@@ -69,6 +80,7 @@ M.keymaps = {
             vim.fn.setreg("*", vim.fn.expand("%"))
             vim.notify("Copied file path to clipboard")
         end,
+        opts = { desc = "Copy current filepath to clipboard" },
     },
     {
         mode = "n",
@@ -77,6 +89,7 @@ M.keymaps = {
             vim.fn.setreg("*", vim.fn.expand("%:p"))
             vim.notify("Copied absolute file path to clipboard")
         end,
+        opts = { desc = "Copy current filepath to clipboard (absolute)" },
     },
 }
 
