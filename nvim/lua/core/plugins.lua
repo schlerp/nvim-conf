@@ -23,27 +23,12 @@ local plugins = {
         },
     },
 
-    -- indent gutters
+    -- mini collection of plugins
     {
-        "lukas-reineke/indent-blankline.nvim",
-        main = "ibl",
-        event = "LspAttach",
-        config = function() require("core.configs.indent") end,
+        "echasnovski/mini.nvim",
+        version = "*",
+        config = function() require("core.configs.mini") end,
     },
-
-    -- surrounds manipulation
-    {
-        "kylechui/nvim-surround",
-        config = function() require("nvim-surround").setup() end,
-        event = "LspAttach",
-    },
-
-    -- notifications
-    --{
-    --    "rcarriga/nvim-notify",
-    --    event = "VeryLazy",
-    --    config = function() require("core.configs.notify") end,
-    --},
 
     -- telescope
     {
