@@ -13,6 +13,11 @@ cmp.setup({
         if buftype == "prompt" then return false end
         return true
     end,
+    snippet = {
+        expand = function(args)
+            require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+        end,
+    },
     sources = {
         { name = "nvim_lsp", keyword_length = 2 },
         { name = "nvim_lua", keyword_length = 2 },
