@@ -39,11 +39,11 @@ local plugins = {
     },
 
     -- notifications
-    {
-        "rcarriga/nvim-notify",
-        event = "VeryLazy",
-        config = function() require("core.configs.notify") end,
-    },
+    --{
+    --    "rcarriga/nvim-notify",
+    --    event = "VeryLazy",
+    --    config = function() require("core.configs.notify") end,
+    --},
 
     -- telescope
     {
@@ -130,26 +130,6 @@ local plugins = {
         config = function() require("core.configs.neodev") end,
     },
 
-    -- terminal
-    {
-        "akinsho/toggleterm.nvim",
-        config = function() require("core.terminal") end,
-        event = "VeryLazy",
-    },
-
-    -- win bar breadcrumbs
-    {
-        "utilyre/barbecue.nvim",
-        name = "barbecue",
-        version = "*",
-        dependencies = {
-            "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons", -- optional dependency
-        },
-        config = function() require("barbecue").setup({}) end,
-        event = "VeryLazy",
-    },
-
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -171,17 +151,9 @@ local plugins = {
         event = "LspAttach",
     },
 
-    -- toggle diagnostic lines
-    {
-        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-        config = function() require("lsp_lines").setup() end,
-        event = "LspAttach",
-    },
-
     -- add lsp server progress
     {
         "j-hui/fidget.nvim",
-        tag = "legacy",
         event = "VeryLazy",
         config = function() require("core.configs.fidget") end,
     },
