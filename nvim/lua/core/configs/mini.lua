@@ -19,3 +19,14 @@ mini_indent.setup({
     },
     symbol = "▏",
 })
+
+-- notifications
+local mini_notify = require("mini.notify")
+mini_notify.setup({
+    window = {
+        config = {
+            border = "none",
+        },
+    },
+})
+vim.notify = mini_notify.make_notify()

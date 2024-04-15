@@ -4,11 +4,13 @@ local plugins = {
     -- many plugins require this
     {
         "nvim-lua/plenary.nvim",
+        event = "VeryLazy",
     },
 
     -- colour scheme
     {
         "ellisonleao/gruvbox.nvim",
+        priority = 1000,
         config = function() require("core.configs.gruvbox") end,
     },
 
@@ -21,6 +23,7 @@ local plugins = {
             "nvim-treesitter/nvim-treesitter-textobjects",
             "RRethy/nvim-treesitter-textsubjects",
         },
+        event = "VeryLazy",
     },
 
     -- mini collection of plugins
@@ -28,6 +31,7 @@ local plugins = {
         "echasnovski/mini.nvim",
         version = "*",
         config = function() require("core.configs.mini") end,
+        event = "VeryLazy",
     },
 
     -- telescope
@@ -80,7 +84,7 @@ local plugins = {
     -- LSP
     {
         "VonHeikemen/lsp-zero.nvim",
-        event = "VeryLazy",
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             -- setup lsp
             require("core.lsp.init")
@@ -135,13 +139,6 @@ local plugins = {
         "mhartington/formatter.nvim",
         config = function() require("core.configs.formatter") end,
         event = "LspAttach",
-    },
-
-    -- add lsp server progress
-    {
-        "j-hui/fidget.nvim",
-        event = "VeryLazy",
-        config = function() require("core.configs.fidget") end,
     },
 
     -- cursor line (underline instances of word under cursor)
