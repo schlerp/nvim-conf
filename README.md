@@ -1,6 +1,6 @@
 # Nvim Config
 
-<img alt="screenshot of neovim config" src="https://github.com/schlerp/nvim-conf/assets/2208036/5a5be33c-6240-4da4-8c53-f148716fe821">
+![screenshot of neovim config](.assets/dashboard.png)
 
 
 This is my neovim config.
