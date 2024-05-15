@@ -61,6 +61,7 @@ local plugins = {
                 },
             })
         end,
+        version = "*",
         event = "VeryLazy",
     },
 
