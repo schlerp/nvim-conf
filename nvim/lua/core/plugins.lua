@@ -48,23 +48,6 @@ local plugins = {
         config = function() require("core.configs.telescope") end,
     },
 
-    -- buffer line (top tabs)
-    {
-        "akinsho/bufferline.nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            require("bufferline").setup({
-                options = {
-                    diagnostics = "nvim_lsp",
-                },
-            })
-        end,
-        version = "*",
-        event = "VeryLazy",
-    },
-
     -- gitsigns - git tools
     {
         "lewis6991/gitsigns.nvim",
