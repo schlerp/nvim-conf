@@ -9,9 +9,9 @@ local plugins = {
 
     -- colour scheme
     {
-        "ellisonleao/gruvbox.nvim",
+        "rebelot/kanagawa.nvim",
         priority = 1000,
-        config = function() require("core.configs.gruvbox") end,
+        config = function() require("core.configs.colorscheme") end,
     },
 
     -- tree sitting
