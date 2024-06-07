@@ -1,6 +1,5 @@
 local opt = vim.opt
 local g = vim.g
-local cmd = vim.cmd
 
 vim.opt.termguicolors = true
 
@@ -81,11 +80,3 @@ opt.sidescroll = 1
 
 -- set the end of buffer fill char to " " (space)
 opt.fillchars = { eob = " " }
-
--- highlight yanked text for 200ms using the "Visual" highlight group
-cmd([[
-    augroup highlight_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
-    augroup END
-]])

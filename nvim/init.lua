@@ -6,3 +6,6 @@ require("core.plugins")
 
 -- setup keymaps
 require("core.keymap")
+
+-- setup autocommands
+require("core.autocommands")
