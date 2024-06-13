@@ -9,9 +9,21 @@ local plugins = {
 
     -- colour scheme
     {
-        "rebelot/kanagawa.nvim",
+        "AlexvZyl/nordic.nvim",
+        lazy = false,
         priority = 1000,
         config = function() require("core.configs.colorscheme") end,
+    },
+
+    -- noice (better gui)
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        config = function() require("core.configs.noice") end,
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+        },
     },
 
     -- tree sitting
