@@ -51,3 +51,67 @@
 ---@field lang_config NvimLanguageConfig | nil The nvim language config from `config.langs.lua`
 ---@field keymap_config NvimKeymapConfig | nil The nvim keymap config from `config.keys.lua`
 ---@field feature_config NvimFeatureConfig | nil The nvim keymap config from `config.keys.lua`
+
+---@alias NvimBorder
+---| "single"
+---| "double"
+---| "shadow"
+---| "rounded"
+---| "none"
+
+-- ------------------------------
+-- mini notify types
+-- ------------------------------
+
+---@alias MiniNotifyLevel
+---| "ERROR"
+---| "WARN"
+---| "INFO"
+---| "DEBUG"
+---| "TRACE"
+---| "OFF"
+
+---@class MiniNotification
+---@field msg string The message to be displayed
+---@field level MiniNotifyLevel The level of the notification
+---@field hl_group string The highlight group to be used
+---@field ts_add number The timestamp of when the notification was added
+---@field ts_update number The timestamp of the latest notification update
+---@field ts_remove number | nil The timestamp of when the notification was removed
+
+---@class MiniNotifyLevelOptions
+---@field duration number The duration of the notification
+---@field hl_group string The highlight group to be used
+
+---@class MiniNotifyOptions
+---@field ERROR MiniNotifyLevelOptions The options for the ERROR level
+---@field WARN MiniNotifyLevelOptions The options for the WARN level
+---@field INFO MiniNotifyLevelOptions The options for the INFO level
+---@field DEBUG MiniNotifyLevelOptions The options for the DEBUG level
+---@field TRACE MiniNotifyLevelOptions The options for the TRACE level
+---@field OFF MiniNotifyLevelOptions The options for the OFF level
+
+---@class MiniNotifyConfigWindowConfig
+---@field border? string The window border
+---@field zindex? number The window zindex
+---@field width? number The window width
+---@field height? number The window height
+
+---@class MiniNotifyConfigWindow
+---@field config? MiniNotifyConfigWindowConfig The window configuration
+---@field border? NvimBorder The window border
+---@field max_width_share? number The maximum width share of the window
+---@field winblend? number The window winblend
+
+---@class MiniNotifyConfigContent
+---@field format? fun(notif: MiniNotification): string The function to format the notification message
+---@field sort? fun(notifs: MiniNotification[]): MiniNotification[] The function to sort the notifications
+
+---@class MiniNotifyConfigLspProgress
+---@field enable? boolean Whether LSP progress should be shown in notifications
+---@field duration_last? number The duration of the last progress report
+
+---@class MiniNotifyConfig
+---@field window? MiniNotifyConfigWindow The window configuration
+---@field content? MiniNotifyConfigContent The content configuration
+---@field lsp_progress? MiniNotifyConfigLspProgress The LSP progress configuration

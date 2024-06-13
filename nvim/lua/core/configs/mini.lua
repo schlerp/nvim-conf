@@ -22,11 +22,49 @@ mini_indent.setup({
 
 -- notifications
 local mini_notify = require("mini.notify")
-mini_notify.setup({
+
+---Format the notification message for display
+---@param notif MiniNotification
+---@return string
+local function notify_format(notif)
+    local icon = "   "
+    if notif.level == "ERROR" then
+        icon = "  "
+    elseif notif.level == "WARN" then
+        icon = "  "
+    elseif notif.level == "INFO" then
+        icon = "  "
+    elseif notif.level == "DEBUG" then
+        icon = "  "
+    elseif notif.level == "TRACE" then
+        icon = "  "
+    end
+
+    return string.format("%s %s", icon, notif.msg)
+end
+
+---@type MiniNotifyConfig
+local notify_setup_settings = {
     window = {
         config = {
-            border = "none",
+            border = "rounded",
         },
+        winblend = 30,
     },
-})
-vim.notify = mini_notify.make_notify()
+    content = {
+        format = notify_format,
+    },
+}
+
+mini_notify.setup(notify_setup_settings)
+
+---@type MiniNotifyOptions
+local mini_notify_opts = {
+    ERROR = { duration = 7000, hl_group = "DiagnosticError" },
+    WARN = { duration = 5000, hl_group = "DiagnosticWarn" },
+    INFO = { duration = 5000, hl_group = "DiagnosticInfo" },
+    DEBUG = { duration = 0, hl_group = "DiagnosticHint" },
+    TRACE = { duration = 0, hl_group = "DiagnosticOk" },
+    OFF = { duration = 0, hl_group = "MiniNotifyNormal" },
+}
+vim.notify = mini_notify.make_notify(mini_notify_opts)
