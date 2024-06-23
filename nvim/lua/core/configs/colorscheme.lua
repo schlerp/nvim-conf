@@ -1,54 +1,84 @@
-require("nordic").setup({
-    -- This callback can be used to override the colors used in the palette.
-    on_palette = function(palette) return palette end,
-    -- Enable bold keywords.
-    bold_keywords = true,
-    -- Enable italic comments.
-    italic_comments = true,
-    -- Enable general editor background transparency.
-    transparent_bg = false,
-    -- Enable brighter float border.
-    bright_border = false,
-    -- Reduce the overall amount of blue in the theme (diverges from base Nord).
-    reduced_blue = true,
-    -- Swap the dark background with the normal one.
-    swap_backgrounds = false,
-    -- Override the styling of any highlight group.
-    override = {},
-    -- Cursorline options.  Also includes visual/selection.
-    cursorline = {
-        -- Bold font in cursorline.
-        bold = true,
-        -- Bold cursorline number.
-        bold_number = true,
-        -- Available styles: 'dark', 'light'.
-        theme = "dark",
-        -- Blending the cursorline bg with the buffer bg.
-        blend = 0.85,
+require("catppuccin").setup({
+    flavour = "auto", -- latte, frappe, macchiato, mocha
+    background = { -- :h background
+        light = "latte",
+        dark = "mocha",
     },
-    noice = {
-        -- Available styles: `classic`, `flat`.
-        style = "flat",
+    transparent_background = false, -- disables setting the background color.
+    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
+    term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
+    dim_inactive = {
+        enabled = true, -- dims the background color of inactive window
+        shade = "dark",
+        percentage = 0.15, -- percentage of the shade to apply to the inactive window
     },
-    telescope = {
-        -- Available styles: `classic`, `flat`.
-        style = "flat",
+    no_italic = false, -- Force no italic
+    no_bold = false, -- Force no bold
+    no_underline = false, -- Force no underline
+    styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+        comments = { "italic" }, -- Change the style of comments
+        conditionals = { "italic" },
+        loops = {},
+        functions = {},
+        keywords = {},
+        strings = {},
+        variables = {},
+        numbers = {},
+        booleans = {},
+        properties = {},
+        types = {},
+        operators = {},
+        -- miscs = {}, -- Uncomment to turn off hard-coded styles
     },
-    leap = {
-        -- Dims the backdrop when using leap.
-        dim_backdrop = false,
-    },
-    ts_context = {
-        -- Enables dark background for treesitter-context window
-        dark_background = true,
+    color_overrides = {},
+    custom_highlights = {},
+    default_integrations = true,
+    integrations = {
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        notify = true,
+        alpha = true,
+        lsp_saga = true,
+        mason = true,
+        noice = true,
+        lsp_trouble = true,
+        telescope = {
+            enabled = true,
+            style = "nvchad",
+        },
+        mini = {
+            enabled = true,
+            indentscope_color = "",
+        },
+        native_lsp = {
+            enabled = true,
+            virtual_text = {
+                errors = { "italic" },
+                hints = { "italic" },
+                warnings = { "italic" },
+                information = { "italic" },
+                ok = { "italic" },
+            },
+            underlines = {
+                errors = { "underline" },
+                hints = { "underline" },
+                warnings = { "underline" },
+                information = { "underline" },
+                ok = { "underline" },
+            },
+            inlay_hints = {
+                background = true,
+            },
+        },
+        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
 })
-
-require("nordic").load()
 
 -- these must be called after the setup function
 -- we want dark mode
 vim.o.background = "dark"
 
 -- set the colour scheme to gruvbox
-vim.api.nvim_command("colorscheme nordic")
+vim.api.nvim_command("colorscheme catppuccin")

@@ -9,7 +9,7 @@ local plugins = {
 
     -- colour scheme
     {
-        "AlexvZyl/nordic.nvim",
+        "catppuccin/nvim",
         lazy = false,
         priority = 1000,
         config = function() require("core.configs.colorscheme") end,
