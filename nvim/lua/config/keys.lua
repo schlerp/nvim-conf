@@ -45,32 +45,20 @@ M.keymaps = {
     {
         mode = "n",
         keys = "<leader>xx",
-        command = function() require("trouble").toggle() end,
+        command = "<cmd>Trouble diagnostics toggle<cr>",
         opts = { desc = "Open trouble (diagnostics)" },
     },
     {
         mode = "n",
-        keys = "<leader>xw",
-        command = function() require("trouble").toggle("workspace_diagnostics") end,
-        opts = { desc = "View workspace diagnostics" },
-    },
-    {
-        mode = "n",
         keys = "<leader>xd",
-        command = function() require("trouble").toggle("document_diagnostics") end,
+        command = "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
         opts = { desc = "View document diagnostics" },
     },
     {
         mode = "n",
         keys = "<leader>xq",
-        command = function() require("trouble").toggle("quickfix") end,
+        command = "<cmd>Trouble qflist toggle<cr>",
         opts = { desc = "Open trouble quickfix" },
-    },
-    {
-        mode = "n",
-        keys = "<leader>xl",
-        command = function() require("trouble").toggle("loclist") end,
-        opts = { desc = "open trouble loclist" },
     },
     -- copy current filename into system copy/paste buffer
     {
