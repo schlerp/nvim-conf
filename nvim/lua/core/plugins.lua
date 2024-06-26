@@ -103,12 +103,6 @@ local plugins = {
         },
     },
 
-    {
-        "nvimdev/lspsaga.nvim",
-        event = "LspAttach",
-        config = function() require("core.configs.lspsaga") end,
-    },
-
     -- for developing neovim plugins
     {
         "folke/neodev.nvim",
