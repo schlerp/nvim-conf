@@ -10,7 +10,7 @@ local M = {
 
     lsp_servers = {
         {
-            lsp_name = "pyright",
+            lsp_name = "basedpyright",
             lsp_settings = {},
         },
         {
