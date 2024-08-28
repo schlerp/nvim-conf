@@ -33,6 +33,13 @@ local function get_used_tools_for_mason()
         for _, x in ipairs(config.lsp_servers) do
             table.insert(ret, x.lsp_name)
         end
+
+        -- get the extra mason tools
+        if config.extra_mason ~= nil then
+            for _, x in ipairs(config.extra_mason) do
+                table.insert(ret, x.lsp_name)
+            end
+        end
     end
     return ret
 end

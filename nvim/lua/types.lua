@@ -27,6 +27,7 @@
 ---@field formatters string[] An array of functions that initialise formatters
 ---@field linters string[] An array of linter names (strings)
 ---@field lsp_servers LspServerDefinition[] An array of LspServerDefinitions
+---@field extra_mason? string[] An array of extra tools to install with mason
 
 ---@class NvimLanguageConfig
 ---@field enabled_langs BuiltinLangs[] The list of enabled languages
