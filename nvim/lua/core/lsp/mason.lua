@@ -47,4 +47,5 @@ end
 require("mason-tool-installer").setup({
     ensure_installed = get_used_tools_for_mason(),
     auto_update = true,
+    run_on_start = false,
 })
