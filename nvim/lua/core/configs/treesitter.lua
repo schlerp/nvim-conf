@@ -4,9 +4,11 @@ print(vim.inspect(lang_configs))
 
 local lang_names = {}
 for _, config in pairs(lang_configs) do
-    if config.treesitter_exclude ~= true then
-        table.insert(lang_names, config.lang_name)
+    local treesitter_lang = config.lang_name
+    if config.treesitter_lang ~= nil then
+        treesitter_lang = config.treesitter_lang
     end
+    table.insert(lang_names, treesitter_lang)
 end
 
 require("nvim-treesitter.configs").setup({
