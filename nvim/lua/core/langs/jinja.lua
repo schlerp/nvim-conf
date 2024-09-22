@@ -17,7 +17,8 @@ local M = {
         },
     },
 
-    treesitter_exclude = true,
+    formatter_lang_name = "html",
+    treesitter_lang = "html",
 }
 
 return M
