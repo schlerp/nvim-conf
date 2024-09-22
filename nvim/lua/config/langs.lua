@@ -7,6 +7,7 @@ local lang_config = {
         "markdown",
         "svelte",
         "html",
+        "jinja",
         "typescript",
         "bash",
         "cpp",

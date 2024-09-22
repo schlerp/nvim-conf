@@ -13,6 +13,7 @@ if config.lang_config == nil then
             "markdown",
             "svelte",
             "html",
+            "jinja",
             "typescript",
             "bash",
             "cpp",
