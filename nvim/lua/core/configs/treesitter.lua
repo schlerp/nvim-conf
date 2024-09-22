@@ -1,8 +1,12 @@
 local lang_configs = require("core.langs.init")
 
+print(vim.inspect(lang_configs))
+
 local lang_names = {}
 for _, config in pairs(lang_configs) do
-    table.insert(lang_names, config.lang_name)
+    if config.treesitter_exclude ~= true then
+        table.insert(lang_names, config.lang_name)
+    end
 end
 
 require("nvim-treesitter.configs").setup({
