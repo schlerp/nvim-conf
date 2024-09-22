@@ -29,7 +29,7 @@
 ---@field linters string[] An array of linter names (strings)
 ---@field lsp_servers LspServerDefinition[] An array of LspServerDefinitions
 ---@field extra_mason? string[] An array of extra tools to install with mason
----@field treesitter_exclude? boolean An array of extra tools to install with mason
+---@field treesitter_lang? string The tree sitter syntax to use for this language
 
 ---@class NvimLanguageConfig
 ---@field enabled_langs BuiltinLangs[] The list of enabled languages
