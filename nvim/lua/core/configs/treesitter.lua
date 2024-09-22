@@ -7,6 +7,7 @@ for _, config in pairs(lang_configs) do
     local treesitter_lang = config.lang_name
     if config.treesitter_lang ~= nil then
         treesitter_lang = config.treesitter_lang
+        vim.treesitter.language.register(treesitter_lang, config.lang_name)
     end
     table.insert(lang_names, treesitter_lang)
 end
