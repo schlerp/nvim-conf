@@ -105,9 +105,15 @@ local plugins = {
 
     -- for developing neovim plugins
     {
-        "folke/neodev.nvim",
-        event = "LspAttach",
-        config = function() require("core.configs.neodev") end,
+        "folke/lazydev.nvim",
+        ft = "lua", -- only load on lua files
+        opts = {
+            library = {
+                -- See the configuration section for more details
+                -- Load luvit types when the `vim.uv` word is found
+                { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+            },
+        },
     },
 
     {
