@@ -14,7 +14,7 @@ local M = {
             lsp_settings = {},
         },
         {
-            lsp_name = "tsserver",
+            lsp_name = "ts_ls",
             lsp_settings = {},
         },
     },

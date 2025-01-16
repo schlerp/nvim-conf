@@ -14,7 +14,7 @@ local M = {
             lsp_settings = {},
         },
         {
-            lsp_name = "ruff_lsp",
+            lsp_name = "ruff",
             lsp_settings = {},
         },
     },
