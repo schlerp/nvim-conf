@@ -113,7 +113,11 @@ local plugins = {
                 -- Load luvit types when the `vim.uv` word is found
                 { path = "${3rd}/luv/library", words = { "vim%.uv" } },
             },
+            enabled = function(root_dir)
+                return vim.g.lazydev_enabled == nil and true or vim.g.lazydev_enabled
+            end,
         },
+        event = "VeryLazy",
     },
 
     {
