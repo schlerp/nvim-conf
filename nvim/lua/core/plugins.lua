@@ -175,6 +175,15 @@ if config.feature_config.use_copilot then
     }
 end
 
+if config.feature_config.use_kraken then
+    -- kraken nvui
+    plugins[#plugins + 1] = {
+        "octoenergy/kraken.nvim",
+        config = function() require("core.configs.kraken") end,
+        event = "LspAttach",
+    }
+end
+
 local function setup_lazy()
     local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 

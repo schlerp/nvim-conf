@@ -49,6 +49,7 @@
 ---@field use_scrollbars boolean | nil If truthy, scrollbars will be enabled
 ---@field use_start_page boolean | nil If truthy, the start page will be installed and used
 ---@field use_copilot boolean | nil If truthy, copilot will be installed and enabled
+---@field use_kraken boolean | nil If truthy, kraken plugin will be installed and enabled
 
 ---@class NvimConfig
 ---@field lang_config NvimLanguageConfig | nil The nvim language config from `config.langs.lua`
