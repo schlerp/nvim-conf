@@ -38,11 +38,10 @@ local plugins = {
         event = "VeryLazy",
     },
 
-    -- mini collection of plugins
+    -- notify
     {
-        "echasnovski/mini.nvim",
-        version = "*",
-        config = function() require("core.configs.mini") end,
+        "rcarriga/nvim-notify",
+        config = function() require("core.configs.notify") end,
         event = "VeryLazy",
     },
 
