@@ -63,7 +63,7 @@ local plugins = {
     -- gitsigns - git tools
     {
         "lewis6991/gitsigns.nvim",
-        config = function() require("gitsigns").setup() end,
+        config = function() require("core.configs.gitsigns") end,
         event = "VeryLazy",
     },
 
