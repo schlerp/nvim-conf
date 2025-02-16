@@ -26,6 +26,14 @@ local plugins = {
         },
     },
 
+    -- snacks
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        config = function() require("core.configs.snacks") end,
+    },
+
     -- tree sitting
     {
         "nvim-treesitter/nvim-treesitter",
