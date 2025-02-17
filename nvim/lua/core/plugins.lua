@@ -67,6 +67,14 @@ local plugins = {
         config = function() require("core.configs.telescope") end,
     },
 
+    {
+        "s1n7ax/nvim-window-picker",
+        name = "window-picker",
+        event = "VeryLazy",
+        version = "2.*",
+        config = function() require("core.configs.winpick") end,
+    },
+
     -- gitsigns - git tools
     {
         "lewis6991/gitsigns.nvim",
