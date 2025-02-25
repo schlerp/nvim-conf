@@ -1,3 +1,5 @@
+local config = require("config")
+
 local M = {}
 
 ---@type KeymapDefinition[]
@@ -80,6 +82,22 @@ M.keymaps = {
         opts = { desc = "Copy current filepath to clipboard (absolute)" },
     },
 }
+
+-- add kraken.nvim keymaps
+if config.use_kraken then
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>kk",
+        command = "<cmd>KLocateTests<cr>",
+        opts = { desc = "Open test file for current file (kraken-core)" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>kn",
+        command = "<cmd>KAddTestFile<cr>",
+        opts = { desc = "Add test file for current file (kraken-core)" },
+    })
+end
 
 ---@type KeymapDefinition[]
 M.terminal_keymaps = {
