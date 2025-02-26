@@ -4,38 +4,87 @@ local M = {}
 
 ---@type KeymapDefinition[]
 M.keymaps = {
-    -- telescope keymaps
+    -- picker keymaps
+    {
+        mode = "n",
+        keys = "<leader>ex",
+        command = function() require("snacks").picker.explorer() end,
+        opts = { desc = "Snacks file explorer" },
+    },
     {
         mode = "n",
         keys = "<leader>ff",
-        command = function() require("telescope.builtin").find_files() end,
+        command = function() require("snacks").picker.files() end,
         opts = { desc = "Fuzzy find files" },
     },
     {
         mode = "n",
         keys = "<leader>fF",
-        command = function() require("telescope.builtin").git_files() end,
+        command = function() require("snacks").picker.git_files() end,
         opts = { desc = "Fuzzy find files (git files)" },
     },
     {
         mode = "n",
         keys = "<leader>fg",
-        command = function() require("telescope.builtin").live_grep() end,
+        command = function() require("snacks").picker.grep() end,
         opts = { desc = "Fuzzy live grep" },
     },
     {
         mode = "n",
         keys = "<leader>fb",
-        command = function() require("telescope.builtin").buffers() end,
+        command = function() require("snacks").picker.buffers() end,
         opts = { desc = "Fuzzy find buffers" },
     },
     {
         mode = "n",
         keys = "<leader>fh",
-        command = function() require("telescope.builtin").help_tags() end,
+        command = function() require("snacks").picker.help() end,
         opts = { desc = "Fuzzy find help tags" },
     },
-
+    -- lsp keymaps
+    {
+        mode = "n",
+        keys = "gd",
+        command = function() require("snacks").picker.lsp_definitions() end,
+        opts = { desc = "Goto Definition" },
+    },
+    {
+        mode = "n",
+        keys = "gD",
+        command = function() require("snacks").picker.lsp_declarations() end,
+        opts = { desc = "Goto Declaration" },
+    },
+    {
+        mode = "n",
+        keys = "gr",
+        command = function() require("snacks").picker.lsp_references() end,
+        nowait = true,
+        opts = { desc = "References" },
+    },
+    {
+        mode = "n",
+        keys = "gI",
+        command = function() require("snacks").picker.lsp_implementations() end,
+        opts = { desc = "Goto Implementation" },
+    },
+    {
+        mode = "n",
+        keys = "gy",
+        command = function() require("snacks").picker.lsp_type_definitions() end,
+        opts = { desc = "Goto T[y]pe Definition" },
+    },
+    {
+        mode = "n",
+        keys = "<leader>ss",
+        command = function() require("snacks").picker.lsp_symbols() end,
+        opts = { desc = "LSP Symbols" },
+    },
+    {
+        mode = "n",
+        keys = "<leader>sS",
+        command = function() require("snacks").picker.lsp_workspace_symbols() end,
+        opts = { desc = "LSP Workspace Symbols" },
+    },
     -- gitsigns
     {
         mode = "n",

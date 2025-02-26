@@ -53,28 +53,6 @@ local plugins = {
         event = "VeryLazy",
     },
 
-    -- telescope
-    {
-        "nvim-telescope/telescope.nvim",
-        event = "VeryLazy",
-        dependencies = {
-            "gbrlsnchs/telescope-lsp-handlers.nvim",
-            {
-                "nvim-telescope/telescope-fzf-native.nvim",
-                build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-            },
-        },
-        config = function() require("core.configs.telescope") end,
-    },
-
-    {
-        "s1n7ax/nvim-window-picker",
-        name = "window-picker",
-        event = "VeryLazy",
-        version = "2.*",
-        config = function() require("core.configs.winpick") end,
-    },
-
     -- gitsigns - git tools
     {
         "lewis6991/gitsigns.nvim",
