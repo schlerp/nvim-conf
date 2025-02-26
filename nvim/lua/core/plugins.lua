@@ -46,13 +46,6 @@ local plugins = {
         event = "VeryLazy",
     },
 
-    -- notify
-    {
-        "rcarriga/nvim-notify",
-        config = function() require("core.configs.notify") end,
-        event = "VeryLazy",
-    },
-
     -- gitsigns - git tools
     {
         "lewis6991/gitsigns.nvim",
