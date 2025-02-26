@@ -1,4 +1,5 @@
 local picker_config = require("core.configs.snacks_picker")
+local notifier_config = require("core.configs.snacks_notifier")
 
 require("snacks").setup(
     ---@type snacks.Config
@@ -10,7 +11,7 @@ require("snacks").setup(
         indent = { enabled = true },
         input = { enabled = false },
         picker = picker_config,
-        notifier = { enabled = false },
+        notifier = notifier_config,
         quickfile = { enabled = true },
         scope = { enabled = true },
         scroll = { enabled = false },

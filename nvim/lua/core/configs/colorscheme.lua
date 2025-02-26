@@ -44,10 +44,6 @@ require("catppuccin").setup({
         mason = true,
         noice = true,
         lsp_trouble = true,
-        telescope = {
-            enabled = true,
-            style = "nvchad",
-        },
         mini = {
             enabled = true,
             indentscope_color = "",
