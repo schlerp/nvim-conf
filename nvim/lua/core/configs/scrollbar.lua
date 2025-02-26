@@ -114,7 +114,6 @@ require("scrollbar").setup({
         "cmp_menu",
         "noice",
         "prompt",
-        "TelescopePrompt",
     },
     autocmd = {
         render = {
