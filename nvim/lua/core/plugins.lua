@@ -65,7 +65,7 @@ local plugins = {
 
     -- LSP
     {
-        "VonHeikemen/lsp-zero.nvim",
+        "neovim/nvim-lspconfig",
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             -- setup lsp
@@ -74,17 +74,12 @@ local plugins = {
         end,
         dependencies = {
             -- LSP Support
-            { "neovim/nvim-lspconfig" }, -- Required
             { "williamboman/mason.nvim" }, -- Optional
             { "williamboman/mason-lspconfig.nvim" }, -- Optional
             { "WhoIsSethDaniel/mason-tool-installer.nvim" }, -- Optional
-
             -- Autocompletion
             { "hrsh7th/nvim-cmp" }, -- Required
             { "hrsh7th/cmp-nvim-lsp" }, -- Required
-            { "L3MON4D3/LuaSnip" }, -- Required
-            { "saadparwaiz1/cmp_luasnip" },
-            { "rafamadriz/friendly-snippets" },
             { "onsails/lspkind.nvim" }, -- Optional
         },
     },
