@@ -10,6 +10,7 @@ require("snacks").setup(
         image = { enabled = false },
         indent = { enabled = true },
         input = { enabled = false },
+        gitbrowse = { enabled = true },
         picker = picker_config,
         notifier = notifier_config,
         quickfile = { enabled = true },

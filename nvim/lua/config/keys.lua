@@ -41,6 +41,12 @@ M.keymaps = {
         command = function() require("snacks").picker.help() end,
         opts = { desc = "Fuzzy find help tags" },
     },
+    {
+        mode = { "n", "v" },
+        keys = "<leader>gc",
+        command = function() require("snacks").gitbrowse() end,
+        opts = { desc = "Open commit line(s) in browser" },
+    },
     -- lsp keymaps
     {
         mode = "n",
