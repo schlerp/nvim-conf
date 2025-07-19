@@ -6,7 +6,7 @@ require("snacks").setup(
     {
         bigfile = { enabled = true },
         dashboard = { enabled = false },
-        explorer = { enabled = true, replace_netrw = true },
+        explorer = { enabled = false, replace_netrw = false },
         image = { enabled = false },
         indent = { enabled = true },
         input = { enabled = false },
