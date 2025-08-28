@@ -12,9 +12,9 @@ require("mason").setup({
     log_level = vim.log.levels.WARN,
 })
 
-require("mason-lspconfig").setup({
-    automatic_installation = true,
-})
+-- require("mason-lspconfig").setup({
+--     automatic_installation = true,
+-- })
 
 local function get_used_tools_for_mason()
     local ret = {}
