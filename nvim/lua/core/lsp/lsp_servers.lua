@@ -1,15 +1,14 @@
 local lang_configs = require("core.langs.init")
-local lspconfig = vim.lsp.config
 
 for _, config in pairs(lang_configs) do
     for _, lsp_definition in pairs(config.lsp_servers) do
-        local lsp = lspconfig[lsp_definition.lsp_name]
-        if lsp.setup ~= nil then
-            local status, err = pcall(lsp.setup, lsp_definition.lsp_settings)
-            if not status then
-                print("Error setting up LSP: " .. lsp_definition.lsp_name)
-                print(err)
-            end
+        local lsp_name = lsp_definition.lsp_name
+        vim.lsp.config(lsp_name, lsp_definition.lsp_settings)
+        vim.lsp.enable(lsp_name)
+        local status, err = pcall(vim.lsp.enable, lsp_name)
+        if not status then
+            print("Error enabling LSP: " .. lsp_name)
+            print(err)
         end
     end
 end
