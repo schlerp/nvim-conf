@@ -154,6 +154,138 @@ if config.use_kraken then
     })
 end
 
+-- add opencode.nvim keymaps
+if config.use_copilot then
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>oA",
+        command = function() require("opencode").ask() end,
+        opts = { desc = "Ask opencode" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>oa",
+        command = function() require("opencode").ask("@cursor: ") end,
+        opts = { desc = "Ask opencode about this" },
+    })
+    table.insert(M.keymaps, {
+        mode = "v",
+        keys = "<leader>oa",
+        command = function() require("opencode").ask("@selection: ") end,
+        opts = { desc = "Ask opencode about selection" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>ot",
+        command = function() require("opencode").toggle() end,
+        opts = { desc = "Toggle embedded opencode" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>on",
+        command = function() require("opencode").command("session_new") end,
+        opts = { desc = "New session" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>oy",
+        command = function() require("opencode").command("messages_copy") end,
+        opts = { desc = "Copy last message" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<S-C-u>",
+        command = function() require("opencode").command("messages_half_page_up") end,
+        opts = { desc = "Scroll messages up" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<S-C-d>",
+        command = function() require("opencode").command("messages_half_page_down") end,
+        opts = { desc = "Scroll messages down" },
+    })
+    table.insert(M.keymaps, {
+        mode = { "n", "v" },
+        keys = "<leader>op",
+        command = function() require("opencode").select_prompt() end,
+        opts = { desc = "Select prompt" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>oe",
+        command = function() require("opencode").prompt("Explain @cursor and its context") end,
+        opts = { desc = "Explain code near cursor" },
+    })
+end
+
+-- add sidekick.nvim keymaps
+if config.use_copilot then
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<tab>",
+        command = function()
+            if not require("sidekick").nes_jump_or_apply() then
+                return "<Tab>"
+            end
+        end,
+        opts = { desc = "Goto/Apply Next Edit Suggestion", expr = true },
+    })
+    table.insert(M.keymaps, {
+        mode = { "n", "t", "i", "x" },
+        keys = "<c-.>",
+        command = function() require("sidekick.cli").toggle() end,
+        opts = { desc = "Sidekick Toggle" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>aa",
+        command = function() require("sidekick.cli").toggle() end,
+        opts = { desc = "Sidekick Toggle CLI" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>as",
+        command = function() require("sidekick.cli").select() end,
+        opts = { desc = "Select CLI" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>ad",
+        command = function() require("sidekick.cli").close() end,
+        opts = { desc = "Detach a CLI Session" },
+    })
+    table.insert(M.keymaps, {
+        mode = { "x", "n" },
+        keys = "<leader>at",
+        command = function() require("sidekick.cli").send({ msg = "{this}" }) end,
+        opts = { desc = "Send This" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>af",
+        command = function() require("sidekick.cli").send({ msg = "{file}" }) end,
+        opts = { desc = "Send File" },
+    })
+    table.insert(M.keymaps, {
+        mode = "x",
+        keys = "<leader>av",
+        command = function() require("sidekick.cli").send({ msg = "{selection}" }) end,
+        opts = { desc = "Send Visual Selection" },
+    })
+    table.insert(M.keymaps, {
+        mode = { "n", "x" },
+        keys = "<leader>ap",
+        command = function() require("sidekick.cli").prompt() end,
+        opts = { desc = "Sidekick Select Prompt" },
+    })
+    table.insert(M.keymaps, {
+        mode = "n",
+        keys = "<leader>ac",
+        command = function() require("sidekick.cli").toggle({ name = "claude", focus = true }) end,
+        opts = { desc = "Sidekick Toggle Claude" },
+    })
+end
+
 ---@type KeymapDefinition[]
 M.terminal_keymaps = {
     {

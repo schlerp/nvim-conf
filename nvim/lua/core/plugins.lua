@@ -154,6 +154,28 @@ if config.feature_config.use_copilot then
         event = "LspAttach",
         config = function() require("core.configs.copilot") end,
     }
+    plugins[#plugins + 1] = {
+        "NickvanDyke/opencode.nvim",
+        dependencies = {
+            { "folke/snacks.nvim", opts = { input = { enabled = true } } },
+        },
+        ---@type opencode.Opts
+        opts = {
+            -- Your configuration, if any — see lua/opencode/config.lua
+        },
+    }
+    plugins[#plugins + 1] = {
+        "folke/sidekick.nvim",
+        opts = {
+            -- add any options here
+            cli = {
+                mux = {
+                    backend = "tmux",
+                    enabled = true,
+                },
+            },
+        },
+    }
 end
 
 if config.feature_config.use_kraken then
