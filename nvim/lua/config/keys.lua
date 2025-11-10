@@ -47,6 +47,30 @@ M.keymaps = {
         command = function() require("snacks").gitbrowse() end,
         opts = { desc = "Open commit line(s) in browser" },
     },
+    {
+        mode = "n",
+        keys = "<leader>gi",
+        command = function() require("snacks").picker.gh_issue() end,
+        opts = { desc = "GitHub Issues (open)" },
+    },
+    {
+        mode = "n",
+        keys = "<leader>gI",
+        command = function() require("snacks").picker.gh_issue({ state = "all" }) end,
+        opts = { desc = "GitHub Issues (all)" },
+    },
+    {
+        mode = "n",
+        keys = "<leader>gp",
+        command = function() require("snacks").picker.gh_pr() end,
+        opts = { desc = "GitHub Pull Requests (open)" },
+    },
+    {
+        mode = "n",
+        keys = "<leader>gP",
+        command = function() require("snacks").picker.gh_pr({ state = "all" }) end,
+        opts = { desc = "GitHub Pull Requests (all)" },
+    },
     -- lsp keymaps
     {
         mode = "n",
