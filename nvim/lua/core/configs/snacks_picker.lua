@@ -1,3 +1,8 @@
+--- Dynamically calculate truncate width based on current window size
+local function get_truncate_width()
+    return (vim.api.nvim_win_get_width(0) * 0.4) - 15
+end
+
 ---@class snacks.picker.Config
 return {
     enabled = true,
@@ -35,7 +40,7 @@ return {
         },
         file = {
             filename_first = false, -- display filename before the file path
-            truncate = 40, -- truncate the file path to (roughly) this length
+            truncate = get_truncate_width, -- dynamically truncate the file path based on window size
             filename_only = false, -- only show the filename
             icon_width = 2, -- width of the icon (in characters)
             git_status_hl = true, -- use the git status highlight group for the filename
