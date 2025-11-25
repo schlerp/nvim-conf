@@ -27,11 +27,13 @@ require("copilot").setup({
             dismiss = "<C-]>",
         },
     },
+    nes = {
+        enabled = false,
+    },
     filetypes = {
         yaml = false,
         markdown = false,
         help = false,
-        gitcommit = false,
         gitrebase = false,
         hgcommit = false,
         svn = false,
