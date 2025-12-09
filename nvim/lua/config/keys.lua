@@ -1,4 +1,5 @@
 local config = require("config.features")
+local gitbrowse_utils = require("core.utils.gitbrowse")
 
 local M = {}
 
@@ -42,10 +43,44 @@ M.keymaps = {
         opts = { desc = "Fuzzy find help tags" },
     },
     {
-        mode = { "n", "v" },
-        keys = "<leader>gc",
-        command = function() require("snacks").gitbrowse() end,
-        opts = { desc = "Open commit line(s) in browser" },
+        mode = "n",
+        keys = "<leader>gbb",
+        command = function()
+            require("snacks").gitbrowse(
+                gitbrowse_utils.build_gitbrows_config(true, false)
+            )
+        end,
+        opts = { desc = "Open file for branch in browser" },
+    },
+    {
+        mode = "v",
+        keys = "<leader>gbb",
+        command = function()
+            require("snacks").gitbrowse(
+                gitbrowse_utils.build_gitbrows_config(true, true)
+            )
+        end,
+        opts = { desc = "Open lines for branch in browser" },
+    },
+    {
+        mode = "n",
+        keys = "<leader>gbm",
+        command = function()
+            require("snacks").gitbrowse(
+                gitbrowse_utils.build_gitbrows_config(false, false)
+            )
+        end,
+        opts = { desc = "Open file for default branch in browser" },
+    },
+    {
+        mode = "v",
+        keys = "<leader>gbm",
+        command = function()
+            require("snacks").gitbrowse(
+                gitbrowse_utils.build_gitbrows_config(false, true)
+            )
+        end,
+        opts = { desc = "Open lines for default branch in browser" },
     },
     {
         mode = "n",
@@ -237,7 +272,9 @@ if config.use_copilot then
     table.insert(M.keymaps, {
         mode = "n",
         keys = "<leader>oe",
-        command = function() require("opencode").prompt("Explain @cursor and its context") end,
+        command = function()
+            require("opencode").prompt("Explain @cursor and its context")
+        end,
         opts = { desc = "Explain code near cursor" },
     })
 end
@@ -248,9 +285,7 @@ if config.use_copilot then
         mode = "n",
         keys = "<tab>",
         command = function()
-            if not require("sidekick").nes_jump_or_apply() then
-                return "<Tab>"
-            end
+            if not require("sidekick").nes_jump_or_apply() then return "<Tab>" end
         end,
         opts = { desc = "Goto/Apply Next Edit Suggestion", expr = true },
     })
@@ -305,7 +340,9 @@ if config.use_copilot then
     table.insert(M.keymaps, {
         mode = "n",
         keys = "<leader>ac",
-        command = function() require("sidekick.cli").toggle({ name = "claude", focus = true }) end,
+        command = function()
+            require("sidekick.cli").toggle({ name = "claude", focus = true })
+        end,
         opts = { desc = "Sidekick Toggle Claude" },
     })
 end
