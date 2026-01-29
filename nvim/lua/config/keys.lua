@@ -1,5 +1,5 @@
 local config = require("config.features")
-local gitbrowse_utils = require("core.utils.gitbrowse")
+local gitbrowse_utils = require("core.utils.gitbrowse_utils")
 
 local M = {}
 
