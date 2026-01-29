@@ -10,20 +10,8 @@ local M = {
 
     lsp_servers = {
         {
-            lsp_name = "pyright",
-            lsp_settings = {
-                basedpyright = {
-                    analysis = {
-                        diagnosticMode = "workspace", -- openFilesOnly | workspace
-                        inlayHints = {
-                            callArgumentNames = true,
-                        },
-                        autoImportCompletions = true,
-                        autoSearchPaths = true,
-                    },
-                    disableOrganizeImports = true,
-                },
-            },
+            lsp_name = "ty",
+            lsp_settings = {},
         },
         {
             lsp_name = "ruff",
