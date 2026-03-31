@@ -47,7 +47,7 @@ M.keymaps = {
         keys = "<leader>gbb",
         command = function()
             require("snacks").gitbrowse(
-                gitbrowse_utils.build_gitbrows_config(true, false)
+                gitbrowse_utils.build_gitbrowse_options(true, false)
             )
         end,
         opts = { desc = "Open file for branch in browser" },
@@ -57,7 +57,7 @@ M.keymaps = {
         keys = "<leader>gbb",
         command = function()
             require("snacks").gitbrowse(
-                gitbrowse_utils.build_gitbrows_config(true, true)
+                gitbrowse_utils.build_gitbrowse_options(true, true)
             )
         end,
         opts = { desc = "Open lines for branch in browser" },
@@ -67,7 +67,7 @@ M.keymaps = {
         keys = "<leader>gbm",
         command = function()
             require("snacks").gitbrowse(
-                gitbrowse_utils.build_gitbrows_config(false, false)
+                gitbrowse_utils.build_gitbrowse_options(false, false)
             )
         end,
         opts = { desc = "Open file for default branch in browser" },
@@ -77,7 +77,7 @@ M.keymaps = {
         keys = "<leader>gbm",
         command = function()
             require("snacks").gitbrowse(
-                gitbrowse_utils.build_gitbrows_config(false, true)
+                gitbrowse_utils.build_gitbrowse_options(false, true)
             )
         end,
         opts = { desc = "Open lines for default branch in browser" },

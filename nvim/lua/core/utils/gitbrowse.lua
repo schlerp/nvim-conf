@@ -37,7 +37,7 @@ end
 
 --- Build config to open lines in current branch
 ---@returns snacks.gitbrowse.Config
-function M.build_gitbrows_config(in_current_branch, is_visual)
+function M.build_gitbrowse_options(in_current_branch, is_visual)
     -- set defaults
     if in_current_branch == nil then in_current_branch = true end
     if is_visual == nil then is_visual = false end
